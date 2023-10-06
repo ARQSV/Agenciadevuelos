@@ -8,6 +8,7 @@ import android.widget.TextView;
 public class Inicio extends AppCompatActivity {
 
     TextView Rodrigo;
+    TextView Cheto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
