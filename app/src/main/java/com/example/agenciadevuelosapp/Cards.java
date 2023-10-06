@@ -3,14 +3,12 @@ package com.example.agenciadevuelosapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
-public class Inicio extends AppCompatActivity {
+public class Cards extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio);
-
+        setContentView(R.layout.activity_cards);
     }
 }
