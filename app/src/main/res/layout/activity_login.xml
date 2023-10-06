@@ -1,114 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginVertical="16dp"
-    android:layout_marginHorizontal="32dp">
+    android:padding="16dp"
+    android:background="@drawable/colores">
 
+    <TextView
+        android:id="@+id/tituloCard1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/denk_one"
+        android:text="DREAM WORTHY TRAVELS"
+        android:textAlignment="center"
+        android:textSize="38sp" />
 
     <ImageView
-        android:id="@+id/login_icon"
-        android:layout_width="128sp"
-        android:layout_height="128dp"
+        android:id="@+id/logoImageView"
+        android:layout_width="250dp"
+        android:layout_height="220dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/equipaje"
-        android:gravity="center"
-        android:layout_marginVertical="25dp"/>
+        android:layout_below="@+id/tituloCard1"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/login"
+        android:gravity="center" />
 
-    <LinearLayout
-        android:id="@+id/messageWelcome"
+    <EditText
+        android:id="@+id/editTextemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_icon"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bienvenido"
-            android:textStyle="bold"
-            android:textSize="32sp"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:fontFamily="@font/roboto_black"/>
+        android:layout_below="@+id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/borde"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textSize="20sp" />
 
 
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/editTextpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/formLogin"
-        android:layout_below="@id/messageWelcome"
-        android:layout_marginVertical="32dp"
-        android:orientation="vertical">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextUsername"
-            android:inputType="textEmailAddress"
-            android:hint="Email"
-            android:background="@drawable/borde"
-            android:textSize="20sp"
-            android:padding="16dp"
-            android:layout_marginTop="12dp"/>
+        android:layout_below="@+id/editTextemail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/borde"
+        android:hint="Password"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textSize="20sp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextPassword"
-            android:inputType="textPassword"
-            android:hint="Password"
-            android:background="@drawable/borde"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:padding="16dp"
-            android:layout_marginTop="12dp"/>
-
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:id="@+id/buttonLogin"
-            android:text="Iniciar sesion"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/roboto_black"
-            android:textSize="16sp"
-            app:backgroundTint="@null"
-            android:background="@drawable/borde"
-            android:textColor="@color/black"/>
-
-        <ProgressBar
-            android:layout_width="24dp"
-            android:layout_height="64dp"
-            android:id="@+id/progressBar"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:layout_marginTop="15dp"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/formLogin"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_below="@+id/editTextpassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/borde"
+        android:text="Registrarse" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No tengo una cuenta."
-            android:fontFamily="@font/roboto_black"
-            />
+    <TextView
+        android:id="@+id/loginTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/registerButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="¿No tienes una cuenta?     Registrate"
+        android:textColor="@color/white" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:id="@+id/txtCreateAccountBtn"
-            android:fontFamily="@font/roboto_black"
-            android:text=" Registrarme"/>
-    </LinearLayout>
 </RelativeLayout>
+
