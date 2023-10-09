@@ -114,21 +114,23 @@
                 android:id="@+id/metododepago"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginBottom="16dp">
 
                 <CheckBox
                     android:id="@+id/checkBoxPayment"
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Pagar con Tarjeta de Crédito" />
 
                 <CheckBox
                     android:id="@+id/checkBoxpago"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pagar  En Efectivo"/>
+                    android:layout_marginTop="20dp"
+                    android:text="Pagar con Tarjeta de Débito"/>
             </LinearLayout>
+
 
             <Button
                 android:id="@+id/btnReserve"
@@ -137,7 +139,7 @@
                 android:text="Reservar Vuelo"
                 android:layout_gravity="center"
                 android:textSize="25sp"
-                android:layout_marginTop="35dp"/>
+                android:layout_marginTop="25dp"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
