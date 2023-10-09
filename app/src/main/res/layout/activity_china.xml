@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ScrollViewCount"
+    android:orientation="vertical"
+    tools:context=".francia">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="25dp"
+                android:text="China"
+                android:textColor="@color/white"
+                android:textSize="42sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnInfo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="95dp"
+            android:onClick="showInfo1"
+            android:backgroundTint="@color/rojo"
+            android:text="HonKong"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnInfo2"
+            android:text="Shangai"
+            android:backgroundTint="@color/rojo"
+            android:layout_marginStart="156dp"
+            android:layout_marginTop="95dp"
+            android:onClick="showInfo2"></Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnInfo3"
+            android:text="Pekin"
+            android:backgroundTint="@color/rojo"
+            android:layout_marginStart="296dp"
+            android:layout_marginTop="95dp"
+            android:onClick="showInfo3"></Button>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/vista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/foto1"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:background="@drawable/honkong"
+                android:padding="16dp">
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/foto2"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:background="@drawable/shangai"
+                android:visibility="gone"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/foto3"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:background="@drawable/pekin"
+                android:visibility="gone"></LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="From"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="480dp"
+            android:layout_marginStart="50dp"
+            android:textSize="16dp"
+            ></TextView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/verde"
+            android:layout_marginTop="483dp"
+            android:layout_marginStart="120dp"></ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To"
+            android:layout_marginTop="480dp"
+            android:layout_marginStart="280dp"
+            android:textSize="16dp"
+            ></TextView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/naranja"
+            android:layout_marginTop="483dp"
+            android:layout_marginStart="370dp"></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:id="@+id/Info1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ES"
+                android:layout_marginTop="510dp"
+                android:layout_marginStart="25dp"
+                android:textSize="42dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HK"
+                android:layout_marginTop="510dp"
+                android:layout_marginStart="205dp"
+                android:textSize="42dp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiempo aproximado de vuelo: 1 día o más"
+                android:layout_marginTop="700dp"
+                android:layout_marginStart="-310dp"
+                android:textSize="14dp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:id="@+id/Info2"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ES"
+                android:layout_marginTop="510dp"
+                android:layout_marginStart="25dp"
+                android:textSize="42dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SH"
+                android:layout_marginTop="510dp"
+                android:layout_marginStart="205dp"
+                android:textSize="42dp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiempo aproximado de vuelo: 23 h 45 min o más"
+                android:layout_marginTop="700dp"
+                android:layout_marginStart="-310dp"
+                android:textSize="14dp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:id="@+id/Info3"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ES"
+                android:layout_marginTop="510dp"
+                android:layout_marginStart="25dp"
+                android:textSize="42dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PK"
+                android:layout_marginTop="510dp"
+                android:layout_marginStart="205dp"
+                android:textSize="42dp"
+                ></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiempo aproximado de vuelo: 1 día 2 h o más"
+                android:layout_marginTop="700dp"
+                android:layout_marginStart="-310dp"
+                android:textSize="14dp"></TextView>
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="110dp"
+            android:background="@drawable/linea"
+            android:layout_marginTop="530dp"
+            android:layout_marginStart="160dp"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avianca"
+            android:textSize="16dp"
+            android:layout_marginTop="580dp"
+            android:layout_marginStart="25dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAL"
+            android:textSize="16dp"
+            android:layout_marginTop="600dp"
+            android:layout_marginStart="25dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avianca"
+            android:textSize="16dp"
+            android:layout_marginTop="580dp"
+            android:layout_marginStart="281dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CDG"
+            android:textSize="16dp"
+            android:layout_marginTop="600dp"
+            android:layout_marginStart="281dp"></TextView>
+
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:background="@drawable/horizonral"
+            android:layout_marginTop="660dp"
+            android:layout_marginStart="90dp"></ImageView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/verde"
+            android:layout_marginTop="670dp"
+            android:layout_marginStart="70dp"></ImageView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/naranja"
+            android:layout_marginTop="670dp"
+            android:layout_marginStart="293dp"></ImageView>
+
+    </RelativeLayout>
+
+</ScrollView>
