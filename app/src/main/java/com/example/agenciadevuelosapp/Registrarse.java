@@ -58,17 +58,14 @@ public class Registrarse extends AppCompatActivity {
     }
 
     private boolean isValidEmail(String email) {
-        // Valida si el correo tiene el formato adecuado
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private boolean isValidUsername(String username) {
-        // Valida si el username comienza con una letra mayúscula
         return Pattern.compile("^[A-Z][a-zA-Z]*$").matcher(username).matches();
     }
 
     private boolean isValidPassword(String password) {
-        // Valida si la contraseña cumple con los requisitos
         return Pattern.compile("^(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$").matcher(password).matches();
     }
 }
