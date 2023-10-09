@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
+import java.util.regex.Pattern;
 
 public class Registrarse extends AppCompatActivity {
 
@@ -35,6 +36,12 @@ public class Registrarse extends AppCompatActivity {
 
                 if (email.isEmpty() || username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(Registrarse.this, "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
+                } else if (!isValidEmail(email)) {
+                    Toast.makeText(Registrarse.this, "Ingrese un correo válido", Toast.LENGTH_SHORT).show();
+                } else if (!isValidUsername(username)) {
+                    Toast.makeText(Registrarse.this, "Ingrese la primera letra en mayúscula para su usuario", Toast.LENGTH_SHORT).show();
+                } else if (!isValidPassword(password)) {
+                    Toast.makeText(Registrarse.this, "Su contraseña debe ser mayor o igual a 8 dígitos y contener letras y números", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Registrarse.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                 }
@@ -49,4 +56,20 @@ public class Registrarse extends AppCompatActivity {
             }
         });
     }
+
+    private boolean isValidEmail(String email) {
+        // Valida si el correo tiene el formato adecuado
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private boolean isValidUsername(String username) {
+        // Valida si el username comienza con una letra mayúscula
+        return Pattern.compile("^[A-Z][a-zA-Z]*$").matcher(username).matches();
+    }
+
+    private boolean isValidPassword(String password) {
+        // Valida si la contraseña cumple con los requisitos
+        return Pattern.compile("^(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$").matcher(password).matches();
+    }
 }
+

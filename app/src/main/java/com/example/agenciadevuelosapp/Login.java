@@ -1,13 +1,15 @@
 package com.example.agenciadevuelosapp;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity {
 
@@ -38,7 +40,11 @@ public class Login extends AppCompatActivity {
                     Intent intent = new Intent(Login.this, Cards.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(Login.this, "Sus credenciales no coinciden", Toast.LENGTH_SHORT).show();
+                    if (isValidEmail(email) && isValidPassword(password)) {
+                        Toast.makeText(Login.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Login.this, "Por favor, ingrese credenciales válidas", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -50,5 +56,14 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private boolean isValidPassword(String password) {
+        Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$");
+        return pattern.matcher(password).matches();
     }
 }
