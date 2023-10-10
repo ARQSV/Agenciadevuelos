@@ -1,72 +1,96 @@
 package com.example.agenciadevuelosapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.AuthResult;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Registrarse extends AppCompatActivity {
 
-    private EditText editTextEmail, editTextUsername, editTextPassword;
-    private Button registerButton;
-    private TextView loginTextView;
+    EditText email, user, pass;
+    Button registerButton;
+
+    private FirebaseAuth mAuth;
+    FirebaseFirestore mFirestore;
+    private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
+        mFirestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-        editTextEmail = findViewById(R.id.editTextemail);
-        editTextUsername = findViewById(R.id.editTextUsername);
-        editTextPassword = findViewById(R.id.editTextpassword);
-        registerButton = findViewById(R.id.registerButton);
-        loginTextView = findViewById(R.id.loginTextView);
+        email = (EditText) findViewById(R.id.editTextemail);
+        user = (EditText) findViewById(R.id.editTextUsername);
+        pass = (EditText) findViewById(R.id.editTextpassword);
+        registerButton = (Button) findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = editTextEmail.getText().toString().trim();
-                String username = editTextUsername.getText().toString().trim();
-                String password = editTextPassword.getText().toString().trim();
+                String ema = email.getText().toString().trim();
+                String username = user.getText().toString().trim();
+                String password = pass.getText().toString().trim();
 
-                if (email.isEmpty() || username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(Registrarse.this, "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
-                } else if (!isValidEmail(email)) {
-                    Toast.makeText(Registrarse.this, "Ingrese un correo válido", Toast.LENGTH_SHORT).show();
-                } else if (!isValidUsername(username)) {
-                    Toast.makeText(Registrarse.this, "Ingrese la primera letra en mayúscula para su usuario", Toast.LENGTH_SHORT).show();
-                } else if (!isValidPassword(password)) {
-                    Toast.makeText(Registrarse.this, "Su contraseña debe ser mayor o igual a 8 dígitos y contener letras y números", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Registrarse.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                if (ema.isEmpty() && username.isEmpty() && password.isEmpty()) {
+                    Toast.makeText(Registrarse.this, "Complete los campos", Toast.LENGTH_SHORT).show();
+                }else {
+                    registerUser(ema, username, password);
                 }
+
             }
         });
 
-        loginTextView.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void registerUser(String ema, String username, String password) {
+        mAuth.createUserWithEmailAndPassword(ema, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Registrarse.this, Login.class);
-                startActivity(intent);
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+                Map<String, Object> map = new HashMap<>();
+                map.put("id", id);
+                map.put("email", ema);
+                map.put("password", password);
+                map.put("Username", username);
+
+                mFirestore.collection("users").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        finish();
+                        startActivity(new Intent(Registrarse.this, Cards.class));
+                        Toast.makeText(Registrarse.this, "Usuario registrado con exitos", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Registrarse.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e){
+                Toast.makeText(Registrarse.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private boolean isValidEmail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private boolean isValidUsername(String username) {
-        return Pattern.compile("^[A-Z][a-zA-Z]*$").matcher(username).matches();
-    }
-
-    private boolean isValidPassword(String password) {
-        return Pattern.compile("^(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$").matcher(password).matches();
     }
 }
-
