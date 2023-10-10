@@ -4,17 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/nar">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="8dp"
-        android:layout_margin="16dp">
+        app:cardCornerRadius="16dp"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="#FFFFFF">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="389dp"
+            android:layout_height="686dp"
+            android:background="@drawable/colores"
             android:orientation="vertical"
             android:padding="16dp"
             tools:context=".MainActivity">
@@ -22,37 +25,49 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reservar Vuelo"
-                android:textSize="24sp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp"
+                android:text="Reservar Vuelo"
+                android:textColor="#333333"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/etOrigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Origen"
-                    android:padding="30dp"/>
+                    android:background="@color/nar"
+                    android:drawableStart="@drawable/airplane"
+                    android:drawablePadding="8dp"
+                    android:hint=" Origen"
+                    android:padding="16dp"
+                    android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/etDestination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Destino"
-                    android:padding="30dp"/>
+                    android:background="@color/nar"
+                    android:drawableStart="@drawable/llegada"
+                    android:drawablePadding="8dp"
+                    android:hint=" Destino"
+                    android:padding="16dp"
+                    android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
             <!-- Campo para seleccionar la fecha de salida -->
@@ -60,17 +75,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
                 <EditText
                     android:id="@+id/etDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Seleccionar Fecha de Salida"
-                    android:focusable="false"
+                    android:background="@color/nar"
+                    android:drawableStart="@drawable/travel"
+                    android:drawablePadding="8dp"
                     android:clickable="true"
-                    android:padding="30dp"
-                    android:onClick="showDatePickerDialog"/>
+                    android:focusable="false"
+                    android:hint=" Seleccionar Fecha de Salida"
+                    android:onClick="showDatePickerDialog"
+                    android:padding="16dp"
+                    android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
             <!-- Campo para seleccionar la fecha de regreso -->
@@ -78,17 +98,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
                 <EditText
                     android:id="@+id/etReturnDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Seleccionar Fecha de Regreso"
-                    android:focusable="false"
+                    android:background="@color/nar"
+                    android:drawableStart="@drawable/travel"
+                    android:drawablePadding="8dp"
                     android:clickable="true"
-                    android:padding="30dp"
-                    android:onClick="showDatePickerDialog"/>
+                    android:focusable="false"
+                    android:hint=" Seleccionar Fecha de Regreso"
+                    android:onClick="showDatePickerDialog"
+                    android:padding="16dp"
+                    android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
             <!-- Campo para seleccionar la hora -->
@@ -96,49 +121,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
                 <EditText
                     android:id="@+id/etTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Seleccionar Hora"
-                    android:focusable="false"
+                    android:background="@color/nar"
+                    android:drawableStart="@drawable/clock"
+                    android:drawablePadding="8dp"
                     android:clickable="true"
-                    android:padding="30dp"
-                    android:onClick="showTimePickerDialog" />
+                    android:focusable="false"
+                    android:hint=" Seleccionar Hora"
+                    android:onClick="showTimePickerDialog"
+                    android:padding="16dp"
+                    android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
+
 
             <!-- LinearLayout horizontal para los CheckBox -->
             <LinearLayout
                 android:id="@+id/metododepago"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
                 <CheckBox
                     android:id="@+id/checkBoxPayment"
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
-                    android:text="Pagar con Tarjeta de Crédito" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  Pagar con Tarjeta de Crédito"
+                    android:drawableStart="@drawable/baseline_credit_card_24"
+                    android:textColor="#333333" />
 
                 <CheckBox
                     android:id="@+id/checkBoxpago"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pagar  En Efectivo"/>
+                    android:layout_marginTop="20dp"
+                    android:text="  Pagar con Tarjeta de Débito"
+                    android:drawableStart="@drawable/baseline_credit_card_24"
+                    android:textColor="#333333" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/btnReserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reservar Vuelo"
                 android:layout_gravity="center"
-                android:textSize="25sp"
-                android:layout_marginTop="35dp"/>
-
+                android:layout_marginTop="25dp"
+                android:backgroundTint="@color/nar"
+                android:text="Reservar Vuelo"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </ScrollView>
+

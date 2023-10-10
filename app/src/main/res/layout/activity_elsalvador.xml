@@ -31,9 +31,9 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:layout_centerHorizontal="true"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="25dp"
-                android:text="Francia"
+                android:text="El Salvador"
                 android:textColor="@color/white"
                 android:textSize="42sp"
                 android:textStyle="bold" />
@@ -47,7 +47,7 @@
             android:layout_marginTop="95dp"
             android:onClick="showInfo1"
             android:backgroundTint="@color/rojo"
-            android:text="Paris">
+            android:text="San Salvador">
 
         </Button>
 
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnInfo2"
-            android:text="Marsella"
+            android:text="Santa Ana"
             android:backgroundTint="@color/rojo"
             android:layout_marginStart="156dp"
             android:layout_marginTop="95dp"
@@ -67,9 +67,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnInfo3"
-            android:text="Lille"
+            android:text="Santa Tecla"
             android:backgroundTint="@color/rojo"
-            android:layout_marginStart="296dp"
+            android:layout_marginStart="276dp"
             android:layout_marginTop="95dp"
             android:onClick="showInfo3">
 
@@ -89,7 +89,7 @@
                 android:id="@+id/foto1"
                 android:layout_height="300dp"
                 android:orientation="vertical"
-                android:background="@drawable/francia_paris"
+                android:background="@drawable/ss"
                 android:padding="16dp">
             </LinearLayout>
 
@@ -98,8 +98,9 @@
                 android:id="@+id/foto2"
                 android:layout_height="300dp"
                 android:orientation="vertical"
-                android:background="@drawable/marsella"
+                android:background="@drawable/sa"
                 android:visibility="gone">
+
             </LinearLayout>
 
             <LinearLayout
@@ -107,7 +108,7 @@
                 android:id="@+id/foto3"
                 android:layout_height="300dp"
                 android:orientation="vertical"
-                android:background="@drawable/lille"
+                android:background="@drawable/st"
                 android:visibility="gone">
 
             </LinearLayout>
@@ -139,9 +140,8 @@
             android:text="To"
             android:layout_marginTop="480dp"
             android:layout_marginStart="280dp"
-            android:textSize="16dp">
-
-        </TextView>
+            android:textSize="16dp"
+            ></TextView>
 
         <ImageView
             android:layout_width="20dp"
@@ -159,7 +159,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ES"
+                android:text="NY"
                 android:layout_marginTop="510dp"
                 android:layout_marginStart="25dp"
                 android:textSize="42dp">
@@ -168,7 +168,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PAR"
+                android:text="ES"
                 android:layout_marginTop="510dp"
                 android:layout_marginStart="205dp"
                 android:textSize="42dp">
@@ -178,9 +178,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiempo aproximado de vuelo: 13 h 5 min o más"
+                android:text="Tiempo aproximado de vuelo: 7 horas o más"
                 android:layout_marginTop="700dp"
-                android:layout_marginStart="-340dp"
+                android:layout_marginStart="-310dp"
                 android:textSize="14dp">
 
             </TextView>
@@ -195,7 +195,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ES"
+                android:text="NY"
                 android:layout_marginTop="510dp"
                 android:layout_marginStart="25dp"
                 android:textSize="42dp">
@@ -204,7 +204,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MRS"
+                android:text="ES"
                 android:layout_marginTop="510dp"
                 android:layout_marginStart="205dp"
                 android:textSize="42dp">
@@ -214,9 +214,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiempo aproximado de vuelo: 14 h 50 min o más"
+                android:text="Tiempo aproximado de vuelo: 9 horas o más"
                 android:layout_marginTop="700dp"
-                android:layout_marginStart="-350dp"
+                android:layout_marginStart="-310dp"
                 android:textSize="14dp">
 
             </TextView>
@@ -231,7 +231,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ES"
+                android:text="NY"
                 android:layout_marginTop="510dp"
                 android:layout_marginStart="25dp"
                 android:textSize="42dp">
@@ -240,7 +240,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LE"
+                android:text="ES"
                 android:layout_marginTop="510dp"
                 android:layout_marginStart="205dp"
                 android:textSize="42dp">
@@ -250,7 +250,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiempo aproximado de vuelo: 1 día 10 h o más"
+                android:text="Tiempo aproximado de vuelo: 8 horas o más"
                 android:layout_marginTop="700dp"
                 android:layout_marginStart="-310dp"
                 android:textSize="14dp">
