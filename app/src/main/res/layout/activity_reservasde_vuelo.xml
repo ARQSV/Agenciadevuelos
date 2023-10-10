@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/nar">
+    android:background="@color/gris">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     android:id="@+id/etOrigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/nar"
+                    android:background="@color/gris"
                     android:drawableStart="@drawable/airplane"
                     android:drawablePadding="8dp"
                     android:hint=" Origen"
@@ -62,7 +62,7 @@
                     android:id="@+id/etDestination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/nar"
+                    android:background="@color/gris"
                     android:drawableStart="@drawable/llegada"
                     android:drawablePadding="8dp"
                     android:hint=" Destino"
@@ -82,7 +82,7 @@
                     android:id="@+id/etDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/nar"
+                    android:background="@color/gris"
                     android:drawableStart="@drawable/travel"
                     android:drawablePadding="8dp"
                     android:clickable="true"
@@ -105,7 +105,7 @@
                     android:id="@+id/etReturnDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/nar"
+                    android:background="@color/gris"
                     android:drawableStart="@drawable/travel"
                     android:drawablePadding="8dp"
                     android:clickable="true"
@@ -128,7 +128,7 @@
                     android:id="@+id/etTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/nar"
+                    android:background="@color/gris"
                     android:drawableStart="@drawable/clock"
                     android:drawablePadding="8dp"
                     android:clickable="true"
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
-                android:backgroundTint="@color/nar"
+                android:backgroundTint="@color/gris"
                 android:text="Reservar Vuelo"
                 android:textColor="@color/black"
                 android:textSize="25sp" />
