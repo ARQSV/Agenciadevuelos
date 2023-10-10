@@ -417,6 +417,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/elsalvador"
+                android:onClick="ElSalvador"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -454,17 +455,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/paris"
+                android:onClick="Francia"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="@font/oswaldo"
                     android:text="FRANCIA"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/oswaldo"
-                    android:layout_marginTop="80dp"
-                    android:textSize="30dp"/>
+                    android:textSize="30dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -487,17 +490,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/china"
+                android:onClick="China"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
                     android:fontFamily="@font/oswaldo"
                     android:text="CHINA"
                     android:textColor="@color/white"
-                    android:layout_marginTop="80dp"
                     android:textSize="30dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

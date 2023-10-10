@@ -37,6 +37,10 @@ public class francia extends AppCompatActivity {
         });
     }
 
+    public void Francia(View view) {
+        Intent francia = new Intent(this, francia.class);
+        startActivity(francia);
+    }
 
     public void showInfo1(View view) {
         info1.setVisibility(View.VISIBLE);

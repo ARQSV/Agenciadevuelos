@@ -34,6 +34,12 @@ public class China extends AppCompatActivity {
         });
     }
 
+    public void China(View view) {
+        Intent china = new Intent(this, China.class);
+        startActivity(china);
+    }
+
+
     public void showInfo1(View view) {
         info1.setVisibility(View.VISIBLE);
         info2.setVisibility(View.GONE);

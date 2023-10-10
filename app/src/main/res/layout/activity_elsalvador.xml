@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:ignore="ScrollViewCount"
     android:orientation="vertical"
-    tools:context=".francia">
+    tools:context=".elsalvador">
 
     <RelativeLayout
         android:layout_width="match_parent"

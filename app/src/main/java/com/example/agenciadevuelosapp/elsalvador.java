@@ -34,6 +34,12 @@ public class elsalvador extends AppCompatActivity {
         });
     }
 
+    public void ElSalvador(View view) {
+        Intent ESA = new Intent(this, elsalvador.class);
+        startActivity(ESA);
+    }
+
+
     public void showInfo1(View view) {
         info1.setVisibility(View.VISIBLE);
         info2.setVisibility(View.GONE);
