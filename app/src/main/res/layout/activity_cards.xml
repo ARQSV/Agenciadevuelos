@@ -39,14 +39,6 @@
             android:background="@drawable/barrasescalonadas"
             />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="340dp"
-            android:layout_marginTop="17dp"
-            android:background="@drawable/carrito"
-             />
-
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
@@ -225,14 +217,16 @@
                     android:textSize="50dp" />
 
                 <Button
+                    android:id="@+id/Reserva"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="-55dp"
                     android:backgroundTint="@color/white"
+                    android:onClick="Reserva"
                     android:text="Reservar"
-                    android:textColor="@color/black"
                     android:textAlignment="center"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
 
@@ -446,8 +440,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
             android:layout_below="@id/cardView3"
@@ -466,11 +458,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="@font/oswaldo"
                     android:text="FRANCIA"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/oswaldo"
-                    android:layout_marginTop="80dp"
-                    android:textSize="30dp"/>
+                    android:textSize="30dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -499,11 +492,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
                     android:fontFamily="@font/oswaldo"
                     android:text="CHINA"
                     android:textColor="@color/white"
-                    android:layout_marginTop="80dp"
                     android:textSize="30dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

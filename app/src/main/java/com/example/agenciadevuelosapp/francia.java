@@ -37,7 +37,6 @@ public class francia extends AppCompatActivity {
         });
     }
 
-
     public void showInfo1(View view) {
         info1.setVisibility(View.VISIBLE);
         info2.setVisibility(View.GONE);

@@ -15,8 +15,8 @@
         app:cardBackgroundColor="#FFFFFF">
 
         <LinearLayout
-            android:layout_width="389dp"
-            android:layout_height="686dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/colores"
             android:orientation="vertical"
             android:padding="16dp"
@@ -33,7 +33,7 @@
                 android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -52,7 +52,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -70,9 +70,8 @@
                     android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Campo para seleccionar la fecha de salida -->
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -95,7 +94,7 @@
 
             <!-- Campo para seleccionar la fecha de regreso -->
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -116,9 +115,8 @@
                     android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Campo para seleccionar la hora -->
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -143,7 +141,7 @@
             <!-- LinearLayout horizontal para los CheckBox -->
             <LinearLayout
                 android:id="@+id/metododepago"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:orientation="vertical">
