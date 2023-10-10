@@ -218,6 +218,7 @@
                     android:textSize="50dp" />
 
                 <Button
+                    android:id="@+id/Reserva"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="200dp"
@@ -417,7 +418,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/elsalvador"
-                android:onClick="ElSalvador"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -441,8 +441,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
             android:layout_below="@id/cardView3"
@@ -455,7 +453,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/paris"
-                android:onClick="Francia"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -490,7 +487,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/china"
-                android:onClick="China"
                 android:orientation="vertical"
                 android:padding="16dp">
 
