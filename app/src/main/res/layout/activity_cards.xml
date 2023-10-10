@@ -102,8 +102,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="-80dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/estrella"
-                    android:tint="@color/azul"/>
+                    android:src="@drawable/estrella" />
 
                 <TextView
                     android:layout_width="188dp"
@@ -717,5 +716,23 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardView10"
+            android:background="@color/fondofinal">
+
+            <TextView
+                android:id="@+id/nombreempresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardView10"
+                android:fontFamily="@font/sofia2"
+                android:text="NUETRA EMPRESA"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
     </RelativeLayout>
 </ScrollView>
