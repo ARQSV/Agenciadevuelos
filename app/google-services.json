@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1065488330637",
+    "project_id": "agenciadevuelosappprueba",
+    "storage_bucket": "agenciadevuelosappprueba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065488330637:android:8692a67ad1f68dc745d7c4",
+        "android_client_info": {
+          "package_name": "com.example.agenciadevuelosapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjbizWVUJr9oUMMbsqMiHZ9yzN4hgUa8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

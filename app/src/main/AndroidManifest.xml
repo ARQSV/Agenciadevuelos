@@ -13,8 +13,7 @@
         android:theme="@style/Theme.AgenciaDeVuelosApp"
         tools:targetApi="31" >
         <activity
-            android:name=".login"
-            android:exported="false" />
+            android:name=".login" />
         <activity
             android:name=".elsalvador"
             android:exported="false" />
@@ -34,7 +33,7 @@
             android:name=".Cards"
             android:exported="false" />
         <activity
-            android:name=".RegistrarUsuario"
+            android:name=".RegistrarUsurious"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

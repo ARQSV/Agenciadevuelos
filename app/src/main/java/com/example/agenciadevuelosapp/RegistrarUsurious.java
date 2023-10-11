@@ -22,13 +22,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class RegistrarUsuario extends AppCompatActivity {
+public class RegistrarUsurious extends AppCompatActivity {
 
-    Button btn_registrarse;
+    Button btn_register;
     EditText name,email,password;
-
-    FirebaseFirestore mFirestore;
-
+    FirebaseFirestore mFirestone;
     FirebaseAuth mAuth;
 
 
@@ -36,18 +34,18 @@ public class RegistrarUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_usuario);
-        mFirestore = FirebaseFirestore.getInstance();
+        mFirestone = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
 
 
-        name = findViewById(R.id.editTextusername);
-        email = findViewById(R.id.editTextUseremail);
-        password = findViewById(R.id.editTextpassword);
-        btn_registrarse = findViewById(R.id.btn_regristrarse);
+        name = findViewById(R.id.name);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        btn_register = findViewById(R.id.btn_registrar);
 
 
-        btn_registrarse.setOnClickListener(new View.OnClickListener() {
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String nameUser = name.getText().toString().trim();
@@ -55,7 +53,7 @@ public class RegistrarUsuario extends AppCompatActivity {
                 String passUser = password.getText().toString().trim();
 
                 if (nameUser.isEmpty() && emailUser.isEmpty() && passUser.isEmpty()){
-                    Toast.makeText(RegistrarUsuario.this, "Completa los Datos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrarUsurious.this, "Completa los Datos", Toast.LENGTH_SHORT).show();
                 }else {
                     registerUser(nameUser,emailUser,passUser);
                 }
@@ -70,29 +68,29 @@ public class RegistrarUsuario extends AppCompatActivity {
         public void onComplete(@NonNull Task<AuthResult> task) {
             String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
             Map<String,Object> map = new HashMap<>();
+            map.put("id",id);
             map.put("name",nameUser);
             map.put("email",emailUser);
             map.put("password",passUser);
 
-            mFirestore.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            mFirestone.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
                     finish();
-                    startActivity(new Intent(RegistrarUsuario.this, login.class));
-                    Toast.makeText(RegistrarUsuario.this, "Usuario Registrado con exito", Toast.LENGTH_SHORT).show();
-
+                    startActivity(new Intent(RegistrarUsurious.this,login.class));
+                    Toast.makeText(RegistrarUsurious.this, "Usuario Ingresado", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(RegistrarUsuario.this, "Error al guardar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrarUsurious.this, "Error al guardar", Toast.LENGTH_SHORT).show();
                 }
             });
         }
     }).addOnFailureListener(new OnFailureListener() {
         @Override
         public void onFailure(@NonNull Exception e) {
-            Toast.makeText(RegistrarUsuario.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrarUsurious.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
         }
     });
     }

@@ -57,24 +57,26 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/iniciarButton"
+        android:id="@+id/iniciar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/borde"
-        android:text="Inicias sesión" />
+        android:text="Ingresar" />
 
     <Button
-        android:id="@+id/loginTextView"
+        android:id="@+id/btn_registrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iniciarButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="Registrate"
-        android:textColor="@color/white" />
+        android:layout_below="@+id/iniciar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Registrarse" />
+
 
 </RelativeLayout>
 
