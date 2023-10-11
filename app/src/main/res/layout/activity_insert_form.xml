@@ -9,24 +9,59 @@
     tools:context=".InsertForm">
 
     <EditText
-        android:id="@+id/titleInput"
+        android:id="@+id/Origen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Título"
+        android:hint="Origen"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/descInput"
+        android:id="@+id/Destino"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Descripcion"
+        android:hint="Destino"
         android:inputType="textLongMessage" />
+
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="Ingrese la fecha de salida"/>
+
+    <EditText
+        android:id="@+id/editTextDate2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="Ingrese la fecha de regreso"/>
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="Ingrese la Hora"/>
+
+
+    <EditText
+        android:id="@+id/textViewPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Tipo de Pago"
+        />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agregar" />
+
 </LinearLayout>

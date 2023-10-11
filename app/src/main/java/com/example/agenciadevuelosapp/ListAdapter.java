@@ -24,11 +24,21 @@ public class ListAdapter extends ArrayAdapter {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.listview_row, null,true);
 
-        TextView titleTextField = (TextView) rowView.findViewById(R.id.title);
-        TextView descTextField = (TextView) rowView.findViewById(R.id.desc);
+        TextView origenTextField = (TextView) rowView.findViewById(R.id.Origen);
+        TextView destinoTextField = (TextView) rowView.findViewById(R.id.Destino);
+        TextView salidaTextField = (TextView) rowView.findViewById(R.id.Fechadesalida);
+        TextView regresoTextField = (TextView) rowView.findViewById(R.id.Fechaderegreso);
+        TextView horaTextField = (TextView) rowView.findViewById(R.id.Hora);
+        TextView pagoTextField = (TextView) rowView.findViewById(R.id.Tipodepago);
 
-        titleTextField.setText(itemArray.get(position).title);
-        descTextField.setText(itemArray.get(position).desc);
+
+        origenTextField.setText(itemArray.get(position).origen);
+        destinoTextField.setText(itemArray.get(position).destino);
+        salidaTextField.setText(itemArray.get(position).salida);
+        regresoTextField.setText(itemArray.get(position).regreso);
+        horaTextField.setText(itemArray.get(position).hora);
+        pagoTextField.setText(itemArray.get(position).pago);
+
 
         return rowView;
     }

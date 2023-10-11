@@ -4,14 +4,27 @@ public class ItemModel {
 
     private String id;
 
-    String title;
-    String desc;
+    String origen;
+    String destino;
 
-    public ItemModel(String id, String title, String desc) {
+    String salida;
+
+    String regreso;
+    String hora;
+    String pago;
+
+
+    public ItemModel(String id, String origen, String destino,String salida,String regreso,String hora,
+    String pago) {
         this.id = id;
-        this.title = title;
-        this.desc = desc;
+        this.origen = origen;
+        this.destino = destino;
+        this.salida = salida;
+        this.regreso = regreso;
+        this.hora = hora;
+        this.pago = pago;
     }
+
 
     public String getId() {
         return id;
