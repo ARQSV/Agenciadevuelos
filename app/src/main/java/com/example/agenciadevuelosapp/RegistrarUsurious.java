@@ -48,19 +48,15 @@ public class RegistrarUsurious extends AppCompatActivity {
                 String emailUser = email.getText().toString().trim();
                 String passUser = password.getText().toString().trim();
 
-                // Validar que los campos no estén vacíos
                 if (nameUser.isEmpty() || emailUser.isEmpty() || passUser.isEmpty()) {
                     Toast.makeText(RegistrarUsurious.this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Validar que el nombre de usuario comience con mayúscula
                     if (!Character.isUpperCase(nameUser.charAt(0))) {
                         Toast.makeText(RegistrarUsurious.this, "El nombre debe comenzar con mayúscula", Toast.LENGTH_SHORT).show();
                     } else {
-                        // Validar que la contraseña tenga más de 8 caracteres
                         if (passUser.length() < 8) {
                             Toast.makeText(RegistrarUsurious.this, "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
                         } else {
-                            // Si todas las validaciones pasan, registrar al usuario
                             registerUser(nameUser, emailUser, passUser);
                         }
                     }
