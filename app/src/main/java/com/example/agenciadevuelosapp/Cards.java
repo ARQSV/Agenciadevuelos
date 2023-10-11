@@ -17,6 +17,10 @@ public class Cards extends AppCompatActivity {
         CardView cardViewElSalvador = findViewById(R.id.cardView3);
         CardView cardViewFrancia = findViewById(R.id.cardView4);
         CardView cardViewChina = findViewById(R.id.cardView5);
+        CardView cardViewCentroAyuda = findViewById(R.id.cardView7);
+        CardView cardViewRequisitos = findViewById(R.id.cardView8);
+
+
 
         cardViewElSalvador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +42,22 @@ public class Cards extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Cards.this, China.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewCentroAyuda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cards.this, FAQ.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewRequisitos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cards.this, Requisitos_viaje.class);
                 startActivity(intent);
             }
         });

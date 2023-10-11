@@ -26,9 +26,9 @@ public class ImagePagerAdapter2 extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View itemView = inflater.inflate(R.layout.pager_item2, container, false);
+        View itemView = inflater.inflate(R.layout.pager_item, container, false);
 
-        ImageView imageView = itemView.findViewById(R.id.imageViewChina);
+        ImageView imageView = itemView.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
 
         container.addView(itemView);
