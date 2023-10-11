@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Paisesdisponibles">
+
+    <TextView
+        android:id="@+id/textViewPaisesDisponibles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Paises Disponibles  "
+        android:drawableStart="@drawable/viajes"
+         android:drawableEnd="@drawable/viajes"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+    app:layout_constraintTop_toBottomOf="@+id/textViewPaisesDisponibles"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descubre el mundo y viaja a estos increíbles países. Explora nuevas culturas, sabores y experiencias que te esperan en cada destino. ¡Haz tus sueños de viajar realidad!"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:textAlignment="center" />
+
+    </androidx.cardview.widget.CardView>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewDescripcion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="90dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
