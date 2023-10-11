@@ -40,29 +40,23 @@ public class ReservadeVuelos extends AppCompatActivity {
         checkBoxPago = findViewById(R.id.checkBoxpago);
         btnReserve = findViewById(R.id.btnReserve);
 
-        // Obtén la lista de países desde el archivo strings.xml
         String[] countries = getResources().getStringArray(R.array.countries_array);
 
-        // Crea un ArrayList para los países, incluyendo "Seleccione un País" al principio
         ArrayList<String> countryList = new ArrayList<>();
         countryList.add("Seleccione un País");
         countryList.addAll(Arrays.asList(countries));
 
-        // Crea un ArrayAdapter para el Spinner y configúralo con los países
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countryList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOrigin.setAdapter(adapter);
         spinnerDestination.setAdapter(adapter);
 
-        // Obtén la lista de aerolíneas desde el archivo strings.xml
         String[] airlines = getResources().getStringArray(R.array.airlines_array);
 
-        // Crea un ArrayList para las aerolíneas, incluyendo "Seleccione una Aerolínea" al principio
         ArrayList<String> airlineList = new ArrayList<>();
         airlineList.add("Seleccione una Aerolínea");
         airlineList.addAll(Arrays.asList(airlines));
 
-        // Crea un ArrayAdapter para el Spinner de aerolíneas y configúralo con los nombres de aerolíneas
         ArrayAdapter<String> airlineAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, airlineList);
         airlineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAirlines.setAdapter(airlineAdapter);
