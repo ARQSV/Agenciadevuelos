@@ -84,16 +84,21 @@ public class MainActivity2 extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_CANCELED) {
                     break;
                 }
-                String title = data.getExtras().getString("title");
-                String desc = data.getExtras().getString("desc");
-                addItem(title, desc);
+                String origen = data.getExtras().getString("origen");
+                String destino = data.getExtras().getString("destino");
+                String salida = data.getExtras().getString("salida");
+                String regreso = data.getExtras().getString("regreso");
+                String hora= data.getExtras().getString("hora");
+                String pago = data.getExtras().getString("pago");
+
+                addItem(origen, destino,salida,regreso,hora,pago);
                 break;
         }
     }
 
     protected void loadDataFromDB() {
         swipeRefreshLayout.setRefreshing(true);
-        db.collection("reservadevuelos").orderBy("created", Query.Direction.ASCENDING)
+        db.collection("lista").orderBy("created", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -101,9 +106,13 @@ public class MainActivity2 extends AppCompatActivity {
                         list.clear();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                String title = (String) document.getData().get("title");
-                                String desc = (String) document.getData().get("desc");
-                                items.add(new ItemModel(document.getId(), title, desc));
+                                String origen = (String) document.getData().get("origen");
+                                String destino = (String) document.getData().get("destino");
+                                String salida = (String) document.getData().get("salida");
+                                String regreso = (String) document.getData().get("regreso");
+                                String hora = (String) document.getData().get("hora");
+                                String pago = (String) document.getData().get("pago");
+                                items.add(new ItemModel(document.getId(), origen, destino,salida,regreso,hora,pago));
                             }
                             list.notifyDataSetChanged();
                         } else {
@@ -114,14 +123,19 @@ public class MainActivity2 extends AppCompatActivity {
                 });
     }
 
-    private void addItem(String title, String desc) {
-        items.add(new ItemModel("", title, desc));
+    private void addItem(String origen, String destino,String salida,String regreso,String hora, String pago) {
+        items.add(new ItemModel("", origen, destino,salida,regreso,hora,pago));
         list.notifyDataSetChanged();
         Map<String, Object> item = new HashMap<>();
-        item.put("title", title);
-        item.put("desc", desc);
+        item.put("origen", origen);
+        item.put("destino", destino);
+        item.put("salida", salida);
+        item.put("regreso", regreso);
+        item.put("hora", hora);
+        item.put("pago", pago);
+
         item.put("created", new Timestamp(new Date()));
-        db.collection("reservadevuelos")
+        db.collection("lista")
                 .add(item)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -142,7 +156,7 @@ public class MainActivity2 extends AppCompatActivity {
         ItemModel item = items.get(index);
         final String itemId = item.getId();
 
-        db.collection("reservadevuelos").document(itemId).delete()
+        db.collection("lista").document(itemId).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
