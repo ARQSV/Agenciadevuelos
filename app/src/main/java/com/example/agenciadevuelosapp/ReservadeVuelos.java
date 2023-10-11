@@ -4,34 +4,38 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
-public class ReservasdeVuelo extends AppCompatActivity {
+public class ReservadeVuelos extends AppCompatActivity {
 
-    private AutoCompleteTextView etOrigin, etDestination;
+    private Spinner spinnerOrigin, spinnerDestination, spinnerAirlines;
     private EditText etDate, etReturnDate, etTime;
     private CheckBox checkBoxPayment, checkBoxPago;
     private Button btnReserve;
-
-    private final String[] allowedCountries = {"Francia", "El Salvador", "China", "Guatemala"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservasde_vuelo);
 
-        etOrigin = findViewById(R.id.etOrigin);
-        etDestination = findViewById(R.id.etDestination);
+        spinnerOrigin = findViewById(R.id.spinnerOrigin);
+        spinnerDestination = findViewById(R.id.spinnerDestination);
+        spinnerAirlines = findViewById(R.id.spinnerAirlines);
         etDate = findViewById(R.id.etDate);
         etReturnDate = findViewById(R.id.etReturnDate);
         etTime = findViewById(R.id.etTime);
@@ -40,9 +44,48 @@ public class ReservasdeVuelo extends AppCompatActivity {
         btnReserve = findViewById(R.id.btnReserve);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, allowedCountries);
-        etOrigin.setAdapter(adapter);
-        etDestination.setAdapter(adapter);
+        String[] countries = getResources().getStringArray(R.array.countries_array);
+
+
+        ArrayList<String> countryList = new ArrayList<>();
+        countryList.add("Seleccione un País");
+        countryList.addAll(Arrays.asList(countries));
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countryList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerOrigin.setAdapter(adapter);
+        spinnerDestination.setAdapter(adapter);
+
+
+        String[] airlines = getResources().getStringArray(R.array.airlines_array);
+
+
+        ArrayList<String> airlineList = new ArrayList<>();
+        airlineList.add("Seleccione una Aerolínea");
+        airlineList.addAll(Arrays.asList(airlines));
+
+
+        ArrayAdapter<String> customAdapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item, airlineList) {
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                if (convertView == null) {
+                    convertView = getLayoutInflater().inflate(R.layout.custom_spinner_item, parent, false);
+                }
+
+                TextView textView = convertView.findViewById(R.id.text);
+                ImageView icon = convertView.findViewById(R.id.icon);
+
+                textView.setText(airlineList.get(position));
+                icon.setImageResource(R.drawable.baseline_airplanemode_active_24);
+
+                return convertView;
+            }
+        };
+
+        customAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerAirlines.setAdapter(customAdapter);
 
         etDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +108,6 @@ public class ReservasdeVuelo extends AppCompatActivity {
             }
         });
 
-
         checkBoxPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,18 +129,18 @@ public class ReservasdeVuelo extends AppCompatActivity {
         btnReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String origin = etOrigin.getText().toString().trim();
-                String destination = etDestination.getText().toString().trim();
+                String origin = spinnerOrigin.getSelectedItem().toString();
+                String destination = spinnerDestination.getSelectedItem().toString();
                 String date = etDate.getText().toString().trim();
                 String returnDate = etReturnDate.getText().toString().trim();
                 String time = etTime.getText().toString().trim();
 
                 if (origin.isEmpty() || destination.isEmpty() || date.isEmpty() || returnDate.isEmpty() || time.isEmpty()) {
-                    Toast.makeText(ReservasdeVuelo.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReservadeVuelos.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (checkBoxPayment.isChecked() && checkBoxPago.isChecked()) {
-                    Toast.makeText(ReservasdeVuelo.this, "Solo se puede seleccionar un método de pago", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReservadeVuelos.this, "Solo se puede seleccionar un método de pago", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -116,13 +158,13 @@ public class ReservasdeVuelo extends AppCompatActivity {
 
                     if (returnYear < year || (returnYear == year && returnMonth < month) ||
                             (returnYear == year && returnMonth == month && returnDay <= day)) {
-                        Toast.makeText(ReservasdeVuelo.this, "La fecha de regreso debe ser posterior a la fecha de ida", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReservadeVuelos.this, "La fecha de regreso debe ser posterior a la fecha de ida", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
 
                 if (origin.equalsIgnoreCase(destination)) {
-                    Toast.makeText(ReservasdeVuelo.this, "El país de origen y destino no pueden ser el mismo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReservadeVuelos.this, "El país de origen y destino no pueden ser el mismo", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -134,7 +176,7 @@ public class ReservasdeVuelo extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
-        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
@@ -144,7 +186,7 @@ public class ReservasdeVuelo extends AppCompatActivity {
                         editText.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     }
                 },
-                year, month, dayOfMonth
+                year, month, day
         );
 
         datePickerDialog.show();
@@ -168,6 +210,7 @@ public class ReservasdeVuelo extends AppCompatActivity {
 
         timePickerDialog.show();
     }
-
 }
+
+
 
