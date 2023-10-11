@@ -58,6 +58,4 @@ public class francia extends AppCompatActivity {
             }
         });
     }
-
-
 }
