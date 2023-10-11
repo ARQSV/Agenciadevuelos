@@ -9,38 +9,41 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListAdapter extends ArrayAdapter {
+public class ListAdapter extends ArrayAdapter<ItemModel> {
 
     private final Activity context;
     private final ArrayList<ItemModel> itemArray;
 
-    public ListAdapter(Activity context, ArrayList<ItemModel> items){
-        super(context,R.layout.listview_row , items);
-        this.context=context;
+    public ListAdapter(Activity context, ArrayList<ItemModel> items) {
+        super(context, R.layout.listview_row, items);
+        this.context = context;
         this.itemArray = items;
     }
 
+    @Override
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.listview_row, null,true);
-
-        TextView origenTextField = (TextView) rowView.findViewById(R.id.Origen);
-        TextView destinoTextField = (TextView) rowView.findViewById(R.id.Destino);
-        TextView salidaTextField = (TextView) rowView.findViewById(R.id.Fechadesalida);
-        TextView regresoTextField = (TextView) rowView.findViewById(R.id.Fechaderegreso);
-        TextView horaTextField = (TextView) rowView.findViewById(R.id.Hora);
-        TextView pagoTextField = (TextView) rowView.findViewById(R.id.Tipodepago);
+        LayoutInflater inflater = context.getLayoutInflater();
+        View rowView = inflater.inflate(R.layout.listview_row, null, false);
 
 
-        origenTextField.setText(itemArray.get(position).origen);
-        destinoTextField.setText(itemArray.get(position).destino);
-        salidaTextField.setText(itemArray.get(position).salida);
-        regresoTextField.setText(itemArray.get(position).regreso);
-        horaTextField.setText(itemArray.get(position).hora);
-        pagoTextField.setText(itemArray.get(position).pago);
+        TextView origenTextField = rowView.findViewById(R.id.Origen);
+        TextView destinoTextField = rowView.findViewById(R.id.Destino);
+        TextView salidaTextField = rowView.findViewById(R.id.Fechadesalida);
+        TextView regresoTextField = rowView.findViewById(R.id.Fechaderegreso);
+        TextView horaTextField = rowView.findViewById(R.id.Hora);
+        TextView pagoTextField = rowView.findViewById(R.id.Tipodepago);
 
+
+        ItemModel currentItem = itemArray.get(position);
+
+
+        origenTextField.setText(currentItem.getOrigen());
+        destinoTextField.setText(currentItem.getDestino());
+        salidaTextField.setText(currentItem.getSalida());
+        regresoTextField.setText(currentItem.getRegreso());
+        horaTextField.setText(currentItem.getHora());
+        pagoTextField.setText(currentItem.getPago());
 
         return rowView;
     }
-
 }

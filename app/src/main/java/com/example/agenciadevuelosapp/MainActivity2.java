@@ -133,7 +133,6 @@ public class MainActivity2 extends AppCompatActivity {
         item.put("regreso", regreso);
         item.put("hora", hora);
         item.put("pago", pago);
-
         item.put("created", new Timestamp(new Date()));
         db.collection("lista")
                 .add(item)

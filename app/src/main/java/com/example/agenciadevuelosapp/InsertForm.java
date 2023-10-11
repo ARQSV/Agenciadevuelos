@@ -24,34 +24,31 @@ public class InsertForm extends AppCompatActivity {
         final EditText Hora = findViewById(R.id.editTextTime);
         final EditText Pago = findViewById(R.id.textViewPago);
 
-
         Button btn = findViewById(R.id.addButton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String origen = Origen.getText().toString();
-                String destino= Destino.getText().toString();
+                String destino = Destino.getText().toString();
                 String salida = FechaS.getText().toString();
                 String regreso = FechaR.getText().toString();
                 String hora = Hora.getText().toString();
                 String pago = Pago.getText().toString();
 
+                if (origen.isEmpty() || destino.isEmpty() || salida.isEmpty() || regreso.isEmpty() || hora.isEmpty() || pago.isEmpty()) {
+                    Toast.makeText(InsertForm.this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent();
+                    intent.putExtra("origen", origen);
+                    intent.putExtra("destino", destino);
+                    intent.putExtra("salida", salida);
+                    intent.putExtra("regreso", regreso);
+                    intent.putExtra("hora", hora);
+                    intent.putExtra("pago", pago);
 
-
-                if (origen.isEmpty() || origen.isEmpty()) {
-                    Toast.makeText(InsertForm.this, "Debes rellenar todos los campos,,,", Toast.LENGTH_SHORT).show();
-                    return;
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
                 }
-                Intent intent = new Intent();
-                intent.putExtra("origen", origen);
-                intent.putExtra("destino", destino);
-                intent.putExtra("origen", salida);
-                intent.putExtra("destino", regreso);
-                intent.putExtra("origen", hora);
-                intent.putExtra("destino", pago);
-
-                setResult(Activity.RESULT_OK, intent);
-                finish();
             }
         });
     }
