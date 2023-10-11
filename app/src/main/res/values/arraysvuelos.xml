@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="flight_options">
+            <item>Vuelo Económico</item>
+            <item>Vuelo de Lujo</item>
+        </string-array>
+</resources>

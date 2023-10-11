@@ -27,7 +27,7 @@
             android:name=".francia"
             android:exported="false" />
         <activity
-            android:name=".ReservasdeVuelo"
+            android:name=".ReservadeVuelo"
             android:exported="false" />
         <activity
             android:name=".Comprobantes"
