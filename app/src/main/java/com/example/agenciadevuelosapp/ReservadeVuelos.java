@@ -4,15 +4,12 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
@@ -43,49 +40,32 @@ public class ReservadeVuelos extends AppCompatActivity {
         checkBoxPago = findViewById(R.id.checkBoxpago);
         btnReserve = findViewById(R.id.btnReserve);
 
-
+        // Obtén la lista de países desde el archivo strings.xml
         String[] countries = getResources().getStringArray(R.array.countries_array);
 
-
+        // Crea un ArrayList para los países, incluyendo "Seleccione un País" al principio
         ArrayList<String> countryList = new ArrayList<>();
         countryList.add("Seleccione un País");
         countryList.addAll(Arrays.asList(countries));
 
-
+        // Crea un ArrayAdapter para el Spinner y configúralo con los países
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countryList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOrigin.setAdapter(adapter);
         spinnerDestination.setAdapter(adapter);
 
-
+        // Obtén la lista de aerolíneas desde el archivo strings.xml
         String[] airlines = getResources().getStringArray(R.array.airlines_array);
 
-
+        // Crea un ArrayList para las aerolíneas, incluyendo "Seleccione una Aerolínea" al principio
         ArrayList<String> airlineList = new ArrayList<>();
         airlineList.add("Seleccione una Aerolínea");
         airlineList.addAll(Arrays.asList(airlines));
 
-
-        ArrayAdapter<String> customAdapter = new ArrayAdapter<String>(this, R.layout.custom_spinner_item, airlineList) {
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                if (convertView == null) {
-                    convertView = getLayoutInflater().inflate(R.layout.custom_spinner_item, parent, false);
-                }
-
-                TextView textView = convertView.findViewById(R.id.text);
-                ImageView icon = convertView.findViewById(R.id.icon);
-
-                textView.setText(airlineList.get(position));
-                icon.setImageResource(R.drawable.baseline_airplanemode_active_24);
-
-                return convertView;
-            }
-        };
-
-        customAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinnerAirlines.setAdapter(customAdapter);
+        // Crea un ArrayAdapter para el Spinner de aerolíneas y configúralo con los nombres de aerolíneas
+        ArrayAdapter<String> airlineAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, airlineList);
+        airlineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAirlines.setAdapter(airlineAdapter);
 
         etDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +124,7 @@ public class ReservadeVuelos extends AppCompatActivity {
                     return;
                 }
 
+
                 if (!returnDate.isEmpty()) {
                     String[] dateParts = date.split("/");
                     String[] returnDateParts = returnDate.split("/");
@@ -167,7 +148,7 @@ public class ReservadeVuelos extends AppCompatActivity {
                     Toast.makeText(ReservadeVuelos.this, "El país de origen y destino no pueden ser el mismo", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                // Aquí puedes agregar más lógica para procesar la reserva de vuelo.
             }
         });
     }
@@ -211,6 +192,7 @@ public class ReservadeVuelos extends AppCompatActivity {
         timePickerDialog.show();
     }
 }
+
 
 
 
