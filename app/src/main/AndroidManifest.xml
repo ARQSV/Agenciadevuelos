@@ -22,7 +22,7 @@
             android:name=".ItemModel"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".InsertForm"
             android:exported="false" />
         <activity
             android:name=".Reservados"
@@ -53,7 +53,7 @@
             android:name=".RegistrarUsurious"
             android:exported="false" />
         <activity
-            android:name=".InsertForm"
+            android:name=".MainActivity2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

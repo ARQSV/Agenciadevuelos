@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,13 +38,13 @@ public class MainActivity2 extends AppCompatActivity {
     ListView listView;
     SwipeRefreshLayout swipeRefreshLayout;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance(); // Base de datos
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         swipeRefreshLayout = findViewById(R.id.refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -139,20 +140,24 @@ public class MainActivity2 extends AppCompatActivity {
 
     private void removeItem(final int index) {
         ItemModel item = items.get(index);
-        items.remove(index);
-        list.notifyDataSetChanged();
-        db.collection("lista").document(item.getId()).delete()
+        final String itemId = item.getId();
+
+        db.collection("lista").document(itemId).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        loadDataFromDB();
+                        // Successfully deleted the item from Firestore, now update the UI
+                        items.remove(index);
+                        list.notifyDataSetChanged();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity2.this, "No se pudo eliminar el ítem", Toast.LENGTH_SHORT).show();
-                        loadDataFromDB();
+                        // Handle the error here
+                        String errorMessage = e.getMessage();
+                        Log.e("DeleteItemError", "Error deleting item: " + errorMessage);
+                        Toast.makeText(MainActivity2.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
