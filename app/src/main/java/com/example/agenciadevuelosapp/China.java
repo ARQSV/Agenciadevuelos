@@ -1,63 +1,62 @@
 package com.example.agenciadevuelosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.os.Handler;
 
 public class China extends AppCompatActivity {
 
-    LinearLayout honkong, shangai, pekin, info1, info2, info3;
+    private ViewPager viewPager;
+    private ImagePagerAdapter adapter;
+    private int currentPage = 0;
+    private static final long AUTO_SCROLL_DELAY = 3000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_china);
 
-        ImageButton btnback = findViewById(R.id.btnBack);
-        info1 = findViewById(R.id.Info1);
-        info2 = findViewById(R.id.Info2);
-        info3 = findViewById(R.id.Info3);
-        honkong = findViewById(R.id.foto1);
-        shangai = findViewById(R.id.foto2);
-        pekin = findViewById(R.id.foto3);
+        viewPager = findViewById(R.id.viewPager);
+        adapter = new ImagePagerAdapter(this);
+        viewPager.setAdapter(adapter);
 
-        btnback.setOnClickListener(new View.OnClickListener() {
+        startAutoScroll();
+    }
+
+    private void startAutoScroll() {
+        final Handler handler = new Handler();
+        final Runnable update = new Runnable() {
+            public void run() {
+                if (currentPage == adapter.getCount() - 1) {
+                    currentPage = 0;
+                } else {
+                    currentPage++;
+                }
+                viewPager.setCurrentItem(currentPage, true);
+            }
+        };
+
+        handler.postDelayed(update, AUTO_SCROLL_DELAY);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(China.this, Cards.class);
-                startActivity(intent);
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                handler.removeCallbacks(update);
+                handler.postDelayed(update, AUTO_SCROLL_DELAY);
             }
         });
-    }
-
-    public void showInfo1(View view) {
-        info1.setVisibility(View.VISIBLE);
-        info2.setVisibility(View.GONE);
-        info3.setVisibility(View.GONE);
-        honkong.setVisibility(View.VISIBLE);
-        shangai.setVisibility(View.GONE);
-        pekin.setVisibility(View.GONE);
-    }
-
-    public void showInfo2(View view) {
-        info1.setVisibility(View.GONE);
-        info2.setVisibility(View.VISIBLE);
-        info3.setVisibility(View.GONE);
-        honkong.setVisibility(View.GONE);
-        shangai.setVisibility(View.VISIBLE);
-        pekin.setVisibility(View.GONE);
-    }
-
-    public void showInfo3(View view) {
-        info1.setVisibility(View.GONE);
-        info2.setVisibility(View.GONE);
-        info3.setVisibility(View.VISIBLE);
-        honkong.setVisibility(View.GONE);
-        shangai.setVisibility(View.GONE);
-        pekin.setVisibility(View.VISIBLE);
     }
 }

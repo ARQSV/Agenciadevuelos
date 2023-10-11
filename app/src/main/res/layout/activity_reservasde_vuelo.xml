@@ -39,12 +39,15 @@
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
-                <Spinner
-                    android:id="@+id/spinnerOrigin"
+                <AutoCompleteTextView
+                    android:id="@+id/etOrigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:background="@color/gris"
+                    android:drawableStart="@drawable/airplane"
+                    android:drawablePadding="8dp"
+                    android:hint=" Origen"
+                    android:padding="16dp"
                     android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
@@ -55,34 +58,17 @@
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp">
 
-                <Spinner
-                    android:id="@+id/spinnerDestination"
+                <AutoCompleteTextView
+                    android:id="@+id/etDestination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:background="@color/gris"
+                    android:drawableStart="@drawable/llegada"
+                    android:drawablePadding="8dp"
+                    android:hint=" Destino"
+                    android:padding="16dp"
                     android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
-            <!-- ... (otras vistas) ... -->
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="8dp">
-
-                <Spinner
-                    android:id="@+id/spinnerAirlines"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:background="@color/gris"
-                    android:textColor="#333333" />
-            </androidx.cardview.widget.CardView>
-
-            <!-- ... (resto del diseño) ... -->
-
 
             <!-- Campo para seleccionar la fecha de salida -->
             <androidx.cardview.widget.CardView
@@ -101,13 +87,13 @@
                     android:drawablePadding="8dp"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Seleccionar Fecha de Salida"
+                    android:hint=" Seleccionar Fecha de Salida"
                     android:onClick="showDatePickerDialog"
                     android:padding="16dp"
                     android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
-
+            <!-- Campo para seleccionar la fecha de regreso -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -124,13 +110,13 @@
                     android:drawablePadding="8dp"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Seleccionar Fecha de Regreso"
+                    android:hint=" Seleccionar Fecha de Regreso"
                     android:onClick="showDatePickerDialog"
                     android:padding="16dp"
                     android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
-
+            <!-- Campo para seleccionar la hora -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,13 +133,14 @@
                     android:drawablePadding="8dp"
                     android:clickable="true"
                     android:focusable="false"
-                    android:hint="Seleccionar Hora"
+                    android:hint=" Seleccionar Hora"
                     android:onClick="showTimePickerDialog"
                     android:padding="16dp"
                     android:textColor="#333333" />
             </androidx.cardview.widget.CardView>
 
 
+            <!-- LinearLayout horizontal para los CheckBox -->
             <LinearLayout
                 android:id="@+id/metododepago"
                 android:layout_width="match_parent"
@@ -165,7 +152,7 @@
                     android:id="@+id/checkBoxPayment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pagar con Tarjeta de Crédito"
+                    android:text="  Pagar con Tarjeta de Crédito"
                     android:drawableStart="@drawable/baseline_credit_card_24"
                     android:textColor="#333333" />
 
@@ -174,7 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Pagar con Tarjeta de Débito"
+                    android:text="  Pagar con Tarjeta de Débito"
                     android:drawableStart="@drawable/baseline_credit_card_24"
                     android:textColor="#333333" />
             </LinearLayout>
@@ -188,10 +175,8 @@
                 android:backgroundTint="@color/gris"
                 android:text="Reservar Vuelo"
                 android:textColor="@color/black"
-                android:textSize="40sp" />
-
+                android:textSize="25sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </ScrollView>
-
 
