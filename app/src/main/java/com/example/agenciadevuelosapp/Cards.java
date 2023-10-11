@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class Cards extends AppCompatActivity {
 
@@ -19,6 +20,7 @@ public class Cards extends AppCompatActivity {
         CardView cardViewChina = findViewById(R.id.cardView5);
         CardView cardViewCentroAyuda = findViewById(R.id.cardView7);
         CardView cardViewRequisitos = findViewById(R.id.cardView8);
+        Button  botondereserva = findViewById(R.id.botonreserva);
 
 
 
@@ -58,6 +60,14 @@ public class Cards extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Cards.this, Requisitos_viaje.class);
+                startActivity(intent);
+            }
+        });
+
+        botondereserva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cards.this, InsertForm.class);
                 startActivity(intent);
             }
         });

@@ -16,7 +16,7 @@
             android:name=".Paisesdisponibles"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".ListAdapter"
@@ -44,9 +44,6 @@
             android:name=".francia"
             android:exported="false" />
         <activity
-            android:name=".ReservadeVuelos"
-            android:exported="false" />
-        <activity
             android:name=".Comprobantes"
             android:exported="false" />
         <activity
@@ -56,7 +53,7 @@
             android:name=".RegistrarUsurious"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
