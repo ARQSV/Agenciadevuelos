@@ -16,6 +16,9 @@
             android:name=".login"
             android:exported="false" />
         <activity
+            android:name=".Compras"
+            android:exported="false" />
+        <activity
             android:name=".elsalvador"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
             android:name=".ReservasdeVuelo"
             android:exported="false" />
         <activity
-            android:name=".Facturas"
+            android:name=".Comprobantes"
             android:exported="false" />
         <activity
             android:name=".Cards"
