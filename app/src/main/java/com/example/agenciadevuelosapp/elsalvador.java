@@ -19,7 +19,7 @@ public class elsalvador extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_china);
+        setContentView(R.layout.activity_elsalvador);
 
         viewPager = findViewById(R.id.viewPager);
         adapter = new ImagePagerAdapter(this);
