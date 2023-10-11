@@ -11,7 +11,7 @@ import android.os.Handler;
 public class elsalvador extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private ImagePagerAdapter adapter;
+    private ImagePagerAdapter3 adapter;
     private int currentPage = 0;
     private static final long AUTO_SCROLL_DELAY = 3000;
 
@@ -21,8 +21,8 @@ public class elsalvador extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_elsalvador);
 
-        viewPager = findViewById(R.id.viewPager);
-        adapter = new ImagePagerAdapter(this);
+        viewPager = findViewById(R.id.viewPager3);
+        adapter = new ImagePagerAdapter3(this);
         viewPager.setAdapter(adapter);
 
         startAutoScroll();
