@@ -165,7 +165,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="610dp"
             android:layout_marginLeft="278dp"
-            android:background="@drawable/china">
+            android:background="@drawable/china2">
         </ImageView>
 
         <ImageView
