@@ -3,6 +3,7 @@ package com.example.agenciadevuelosapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,9 +51,9 @@ public class Registrarse extends AppCompatActivity {
                 String username = user.getText().toString().trim();
                 String password = pass.getText().toString().trim();
 
-                if (ema.isEmpty() && username.isEmpty() && password.isEmpty()) {
+                if (ema.isEmpty() || username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(Registrarse.this, "Complete los campos", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     registerUser(ema, username, password);
                 }
 
@@ -65,26 +66,34 @@ public class Registrarse extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(ema, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-                Map<String, Object> map = new HashMap<>();
-                map.put("id", id);
-                map.put("email", ema);
-                map.put("password", password);
-                map.put("Username", username);
 
-                mFirestore.collection("users").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        finish();
-                        startActivity(new Intent(Registrarse.this, Cards.class));
-                        Toast.makeText(Registrarse.this, "Usuario registrado con exitos", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Registrarse.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                if (task.isSuccessful()) {
+                    String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("id", id);
+                    map.put("email", ema);
+                    map.put("password", password);
+                    map.put("Username", username);
+
+                    mFirestore.collection("users").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            finish();
+                            startActivity(new Intent(Registrarse.this, Cards.class));
+                            Toast.makeText(Registrarse.this, "Usuario registrado con exitos", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("TAG", "Error al intentar crear el usuario", e);
+                            Toast.makeText(Registrarse.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Log.e("TAG", "Error al completar la creación del usuario", task.getException());
+                    Toast.makeText(Registrarse.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
+                }
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
