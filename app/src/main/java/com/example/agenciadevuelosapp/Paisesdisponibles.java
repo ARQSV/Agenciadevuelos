@@ -16,7 +16,7 @@ public class Paisesdisponibles extends AppCompatActivity {
         setContentView(R.layout.activity_paisesdisponibles);
 
         viewPager = findViewById(R.id.viewPager);
-        PageAdapter adapter = new PageAdapter(this); // Cambia ImagePagerAdapter a PageAdapter
+        PageAdapter adapter = new PageAdapter(this);
         viewPager.setAdapter(adapter);
     }
 }
