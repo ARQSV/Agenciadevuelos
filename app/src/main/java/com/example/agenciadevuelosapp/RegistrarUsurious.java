@@ -25,10 +25,9 @@ import java.util.Objects;
 public class RegistrarUsurious extends AppCompatActivity {
 
     Button btn_register;
-    EditText name,email,password;
+    EditText name, email, password;
     FirebaseFirestore mFirestone;
     FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +36,10 @@ public class RegistrarUsurious extends AppCompatActivity {
         mFirestone = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-
-
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btn_register = findViewById(R.id.btn_registrar);
-
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,46 +48,53 @@ public class RegistrarUsurious extends AppCompatActivity {
                 String emailUser = email.getText().toString().trim();
                 String passUser = password.getText().toString().trim();
 
-                if (nameUser.isEmpty() && emailUser.isEmpty() && passUser.isEmpty()){
-                    Toast.makeText(RegistrarUsurious.this, "Completa los Datos", Toast.LENGTH_SHORT).show();
-                }else {
-                    registerUser(nameUser,emailUser,passUser);
+                if (nameUser.isEmpty() || emailUser.isEmpty() || passUser.isEmpty()) {
+                    Toast.makeText(RegistrarUsurious.this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (!Character.isUpperCase(nameUser.charAt(0))) {
+                        Toast.makeText(RegistrarUsurious.this, "El nombre debe comenzar con mayúscula", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (passUser.length() < 8) {
+                            Toast.makeText(RegistrarUsurious.this, "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
+                        } else {
+                            registerUser(nameUser, emailUser, passUser);
+                        }
+                    }
                 }
             }
         });
-
     }
 
     private void registerUser(String nameUser, String emailUser, String passUser) {
-    mAuth.createUserWithEmailAndPassword(emailUser,passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-            Map<String,Object> map = new HashMap<>();
-            map.put("id",id);
-            map.put("name",nameUser);
-            map.put("email",emailUser);
-            map.put("password",passUser);
+        mAuth.createUserWithEmailAndPassword(emailUser, passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+                Map<String, Object> map = new HashMap<>();
+                map.put("id", id);
+                map.put("name", nameUser);
+                map.put("email", emailUser);
+                map.put("password", passUser);
 
-            mFirestone.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    finish();
-                    startActivity(new Intent(RegistrarUsurious.this,login.class));
-                    Toast.makeText(RegistrarUsurious.this, "Usuario Ingresado", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(RegistrarUsurious.this, "Error al guardar", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }).addOnFailureListener(new OnFailureListener() {
-        @Override
-        public void onFailure(@NonNull Exception e) {
-            Toast.makeText(RegistrarUsurious.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
-        }
-    });
+                mFirestone.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        finish();
+                        startActivity(new Intent(RegistrarUsurious.this, login.class));
+                        Toast.makeText(RegistrarUsurious.this, "Usuario Ingresado", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegistrarUsurious.this, "Error al guardar", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(RegistrarUsurious.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
