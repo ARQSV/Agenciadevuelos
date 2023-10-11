@@ -93,7 +93,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     protected void loadDataFromDB() {
         swipeRefreshLayout.setRefreshing(true);
-        db.collection("lista").orderBy("created", Query.Direction.ASCENDING)
+        db.collection("reservadevuelos").orderBy("created", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -121,7 +121,7 @@ public class MainActivity2 extends AppCompatActivity {
         item.put("title", title);
         item.put("desc", desc);
         item.put("created", new Timestamp(new Date()));
-        db.collection("lista")
+        db.collection("reservadevuelos")
                 .add(item)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -142,7 +142,7 @@ public class MainActivity2 extends AppCompatActivity {
         ItemModel item = items.get(index);
         final String itemId = item.getId();
 
-        db.collection("lista").document(itemId).delete()
+        db.collection("reservadevuelos").document(itemId).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
