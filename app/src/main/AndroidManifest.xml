@@ -47,13 +47,17 @@
             android:name=".Comprobantes"
             android:exported="false" />
         <activity
-            android:name=".Cards"
+            android:name=".MainActivity2"
             android:exported="false" />
+        <activity android:name=".FAQ"
+            android:exported="false"/>
+        <activity android:name=".Requisitos_viaje"
+            android:exported="false"/>
         <activity
             android:name=".RegistrarUsurious"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".Cards"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
