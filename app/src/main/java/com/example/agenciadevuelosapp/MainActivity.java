@@ -20,23 +20,22 @@ public class MainActivity extends AppCompatActivity {
         ImageView gifImageView = findViewById(R.id.gifImageView);
         Glide.with(this).asGif().load(R.drawable.avioninicio).into(gifImageView);
 
-        // Crear un objeto Handler para programar la transición
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                // Crear un Intent para cambiar a Login
-                Intent intent = new Intent(MainActivity.this, Login.class);
+
+                Intent intent = new Intent(MainActivity.this, login.class);
                 startActivity(intent);
-                finish(); // Opcional, para cerrar MainActivity después de la transición
+                finish();
             }
         };
 
-        // Programar la transición después de 4 segundos (4000 milisegundos)
+
         handler.postDelayed(runnable, 4000);
     }
 
-    // Método para pasar a la actividad Cards
+
     public void Siguiente(View view) {
         Intent intent = new Intent(this, Cards.class);
         startActivity(intent);
