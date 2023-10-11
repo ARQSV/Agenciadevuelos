@@ -76,6 +76,14 @@ public class RegistrarUsurious extends AppCompatActivity {
                 map.put("email", emailUser);
                 map.put("password", passUser);
 
+                btn_register.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(RegistrarUsurious.this,login.class);
+                        startActivity(intent);
+                    }
+                });
+
                 mFirestone.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -90,11 +98,7 @@ public class RegistrarUsurious extends AppCompatActivity {
                     }
                 });
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(RegistrarUsurious.this, "Error al registrarse", Toast.LENGTH_SHORT).show();
-            }
         });
+
     }
 }
