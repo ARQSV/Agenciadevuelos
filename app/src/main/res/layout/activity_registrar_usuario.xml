@@ -12,10 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/denk_one"
+        android:fontFamily="@font/sofia2"
         android:text="DREAM WORTHY TRAVELS"
         android:textAlignment="center"
         android:textSize="38sp" />
+
+
+
 
     <ImageView
         android:id="@+id/logoImageView"
@@ -28,24 +31,10 @@
         android:gravity="center" />
 
     <EditText
-        android:id="@+id/editTextemail"
+        android:id="@+id/editTextusername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoImageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/borde"
-        android:hint=" Email"
-        android:drawableStart="@drawable/baseline_email_24"
-        android:inputType="textEmailAddress"
-        android:padding="16dp"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/editTextUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextemail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:background="@drawable/borde"
@@ -56,10 +45,25 @@
         android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/editTextUseremail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextusername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/borde"
+        android:hint=" Email"
+        android:drawableStart="@drawable/baseline_email_24"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textSize="20sp" />
+
+
+    <EditText
         android:id="@+id/editTextpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextUsername"
+        android:layout_below="@+id/editTextUseremail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:background="@drawable/borde"
@@ -70,7 +74,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/btn_regristrarse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextpassword"
@@ -83,7 +87,7 @@
         android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/registerButton"
+        android:layout_below="@+id/btn_regristrarse"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:text="¿Ya tienes una cuenta?     Iniciar sesión"
