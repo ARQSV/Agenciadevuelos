@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    app:cardUseCompatPadding="true">
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
 
         <ImageButton
             android:id="@+id/editar"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="305dp"
+            android:layout_marginLeft="310dp"
             android:layout_marginTop="20dp"
-            android:onClick="editarElemento"
             android:background="@drawable/editando"
             tools:ignore="OnClick">
         </ImageButton>
@@ -25,7 +27,7 @@
             android:id="@+id/eliminar"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="305dp"
+            android:layout_marginLeft="310dp"
             android:layout_marginTop="85dp"
             android:background="@drawable/borrar">
         </ImageButton>
@@ -33,7 +35,7 @@
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="305dp"
+            android:layout_marginLeft="310dp"
             android:layout_marginTop="156dp"
             android:background="@drawable/descargarpdf">
         </ImageButton>
