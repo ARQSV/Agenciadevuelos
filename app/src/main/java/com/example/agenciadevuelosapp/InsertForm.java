@@ -56,7 +56,7 @@ public class InsertForm extends AppCompatActivity {
                 } else if (origen.equalsIgnoreCase(destino)) {
                     Toast.makeText(InsertForm.this, "El origen y el destino no pueden ser iguales", Toast.LENGTH_SHORT).show();
                 } else {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                     dateFormat.setLenient(false);
                     Date dateSalida, dateRegreso;
                     try {
