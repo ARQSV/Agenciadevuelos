@@ -176,11 +176,18 @@
             android:layout_marginLeft="180dp">
         </ImageView>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reservar oferta"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="680dp"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@drawable/horizonral"
-            android:layout_marginTop="660dp">
+            android:layout_marginTop="720dp">
         </ImageView>
 
         <!-- Agregar los dos CardView debajo de las imágenes -->

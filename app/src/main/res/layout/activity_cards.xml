@@ -116,6 +116,7 @@
                     android:textAlignment="center"/>
 
                 <Button
+                    android:id="@+id/botonreserva"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/black"
@@ -125,6 +126,7 @@
                     app:iconTint="#000000" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cuadrito"
             android:layout_width="match_parent"
@@ -559,6 +561,7 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView7"
             android:layout_below="@id/cardView6"

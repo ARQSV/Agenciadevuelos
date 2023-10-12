@@ -26,6 +26,7 @@ public class ItemModel {
         return id;
     }
 
+
     public String getOrigen() {
         return origen;
     }
@@ -50,3 +51,4 @@ public class ItemModel {
         return pago;
     }
 }
+
