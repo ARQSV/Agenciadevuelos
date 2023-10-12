@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +25,18 @@ public class InsertForm extends AppCompatActivity {
 
         final EditText Origen = findViewById(R.id.Origen);
         final EditText Destino = findViewById(R.id.Destino);
+
+        // Configura el teclado de texto para los campos de origen y destino
+        Origen.setInputType(InputType.TYPE_CLASS_TEXT);
+        Destino.setInputType(InputType.TYPE_CLASS_TEXT);
+
         final EditText FechaS = findViewById(R.id.editTextDate);
         final EditText FechaR = findViewById(R.id.editTextDate2);
+
+        // Configura el teclado para los campos de fecha de salida y fecha de regreso
+        FechaS.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
+        FechaR.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
+
         final EditText Hora = findViewById(R.id.editTextTime);
         final EditText Pago = findViewById(R.id.textViewPago);
 
@@ -35,13 +46,15 @@ public class InsertForm extends AppCompatActivity {
             public void onClick(View v) {
                 String origen = Origen.getText().toString();
                 String destino = Destino.getText().toString();
-                String salida = FechaS.getText().toString();
-                String regreso = FechaR.getText().toString();
+                String salida = FechaS.getText().toString().replace("-", "/");
+                String regreso = FechaR.getText().toString().replace("-", "/");
                 String hora = Hora.getText().toString();
                 String pago = Pago.getText().toString();
 
                 if (TextUtils.isEmpty(origen) || TextUtils.isEmpty(destino) || TextUtils.isEmpty(salida) || TextUtils.isEmpty(regreso) || TextUtils.isEmpty(hora) || TextUtils.isEmpty(pago)) {
                     Toast.makeText(InsertForm.this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+                } else if (origen.equalsIgnoreCase(destino)) {
+                    Toast.makeText(InsertForm.this, "El origen y el destino no pueden ser iguales", Toast.LENGTH_SHORT).show();
                 } else {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                     dateFormat.setLenient(false);
@@ -84,7 +97,9 @@ public class InsertForm extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
+
+
+
 
