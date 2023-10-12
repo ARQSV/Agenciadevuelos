@@ -7,13 +7,26 @@
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".InsertForm">
-
+    <TextView
+        android:id="@+id/textViewReservadeVuelos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Reserva De Vuelos  "
+        android:textSize="24sp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="65dp"/>
     <EditText
         android:id="@+id/Origen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Origen"
+        android:hint="  Origen"
+        android:layout_marginTop="25dp"
+        android:drawableStart="@drawable/airplane"
         android:inputType="textPersonName" />
 
     <EditText
@@ -21,7 +34,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Destino"
+        android:layout_marginTop="25dp"
+        android:hint="  Destino"
+        android:drawableStart="@drawable/llegada"
         android:inputType="textLongMessage" />
 
 
@@ -31,7 +46,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="date"
-        android:hint="Ingrese la fecha de salida"/>
+        android:layout_marginTop="25dp"
+        android:hint="  Ingrese la fecha de salida"
+        android:drawableStart="@drawable/baseline_calendar_month_24"/>
 
     <EditText
         android:id="@+id/editTextDate2"
@@ -39,7 +56,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="date"
-        android:hint="Ingrese la fecha de regreso"/>
+        android:layout_marginTop="25dp"
+        android:hint="  Ingrese la fecha de regreso"
+        android:drawableStart="@drawable/baseline_calendar_month_24"/>
 
     <EditText
         android:id="@+id/editTextTime"
@@ -47,7 +66,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="time"
-        android:hint="Ingrese la Hora"/>
+        android:hint="  Ingrese la Hora"
+        android:layout_marginTop="25dp"
+        android:drawableStart="@drawable/clock"/>
 
 
     <EditText
@@ -55,13 +76,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Tipo de Pago"
+        android:hint="  Tipo de Pago"
+        android:layout_marginTop="25dp"
+        android:drawableStart="@drawable/baseline_credit_card_24"
         />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Agregar" />
 
 </LinearLayout>
