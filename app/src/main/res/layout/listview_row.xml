@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,16 +11,16 @@
         app:cardUseCompatPadding="true">
 
 
-        <ImageButton
+        <ImageView
             android:id="@+id/eliminar"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="300dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/borrar">
-        </ImageButton>
+        </ImageView>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/pagar"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -30,7 +28,7 @@
         android:layout_marginTop="125dp"
         android:background="@drawable/tarjetas">
 
-    </ImageButton>
+    </ImageView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="280dp"

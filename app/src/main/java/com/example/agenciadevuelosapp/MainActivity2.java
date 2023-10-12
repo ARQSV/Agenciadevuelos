@@ -81,6 +81,7 @@ public class MainActivity2 extends AppCompatActivity {
         this.loadDataFromDB();
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -179,5 +180,4 @@ public class MainActivity2 extends AppCompatActivity {
                     }
                 });
     }
-
 }
