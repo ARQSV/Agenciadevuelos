@@ -24,7 +24,6 @@ public class Compras extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compras);
 
-        spinnerFlights = findViewById(R.id.spinner_flights);
         textViewPrice = findViewById(R.id.textview_price);
 
         // Asigna precios a las opciones del vuelo
