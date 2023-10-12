@@ -16,7 +16,7 @@
             android:name=".Cards"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".PaisesDisponibles"
             android:exported="false" />
         <activity
             android:name=".ListAdapter"
@@ -57,7 +57,7 @@
             android:name=".RegistrarUsurious"
             android:exported="false" />
         <activity
-            android:name=".PaisesDisponibles"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
