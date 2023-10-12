@@ -7,12 +7,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.viewpager.widget.PagerAdapter;
 
-public class PageAdapter extends PagerAdapter {
+public class customPagerAdapter extends PagerAdapter {
     private Context context;
-    private int[] images = {R.drawable.francia, R.drawable.elsalvador, R.drawable.china, R.drawable.guatemala, R.drawable.españa, R.drawable.estadosunidos};
+    private int[] images;
 
-    public PageAdapter(Context context) {
+    public customPagerAdapter(Context context, int[] images) {
         this.context = context;
+        this.images = images;
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View itemView = inflater.inflate(R.layout.pager_item, container, false);
+
+        ImageView imageView = itemView.findViewById(R.id.imageView);
+        imageView.setImageResource(images[position]);
+
+        container.addView(itemView);
+
+        return itemView;
     }
 
     @Override
@@ -26,19 +40,11 @@ public class PageAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        ImageView imageView = new ImageView(context);
-        imageView.setImageResource(images[position]);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        container.addView(imageView);
-
-        return imageView;
-    }
-
-    @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((ImageView) object);
+        container.removeView((View) object);
     }
 }
+
+
 
 
