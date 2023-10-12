@@ -32,13 +32,15 @@
             android:background="@drawable/borrar">
         </ImageButton>
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="310dp"
-            android:layout_marginTop="156dp"
-            android:background="@drawable/descargarpdf">
-        </ImageButton>
+    <ImageButton
+        android:id="@+id/pagar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="156dp"
+        android:background="@drawable/tarjetas">
+
+    </ImageButton>
 
     <androidx.cardview.widget.CardView
         android:layout_width="280dp"

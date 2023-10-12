@@ -1,7 +1,9 @@
 package com.example.agenciadevuelosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -26,14 +29,12 @@ public class InsertForm extends AppCompatActivity {
         final EditText Origen = findViewById(R.id.Origen);
         final EditText Destino = findViewById(R.id.Destino);
 
-        // Configura el teclado de texto para los campos de origen y destino
         Origen.setInputType(InputType.TYPE_CLASS_TEXT);
         Destino.setInputType(InputType.TYPE_CLASS_TEXT);
 
         final EditText FechaS = findViewById(R.id.editTextDate);
         final EditText FechaR = findViewById(R.id.editTextDate2);
 
-        // Configura el teclado para los campos de fecha de salida y fecha de regreso
         FechaS.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
         FechaR.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
 
@@ -56,7 +57,7 @@ public class InsertForm extends AppCompatActivity {
                 } else if (origen.equalsIgnoreCase(destino)) {
                     Toast.makeText(InsertForm.this, "El origen y el destino no pueden ser iguales", Toast.LENGTH_SHORT).show();
                 } else {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                     dateFormat.setLenient(false);
                     Date dateSalida, dateRegreso;
                     try {
@@ -96,6 +97,8 @@ public class InsertForm extends AppCompatActivity {
                     }
                 }
             }
+
+
         });
     }
 }

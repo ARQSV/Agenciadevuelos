@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        handler.postDelayed(runnable, 4000);
+        handler.postDelayed(runnable, 5000);
     }
 
 
