@@ -1,17 +1,16 @@
 package com.example.agenciadevuelosapp;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.viewpager.widget.PagerAdapter;
 
-public class PageAdapter extends PagerAdapter {
+public class CustomPagerAdapter extends PagerAdapter {
     private Context context;
-    private int[] images = {R.drawable.francia, R.drawable.elsalvador, R.drawable.china, R.drawable.guatemala, R.drawable.españa, R.drawable.estadosunidos};
+    private int[] images = {R.drawable.francia, R.drawable.elsalvador, R.drawable.china, R.drawable.guatemala, R.drawable.pna, R.drawable.estadosunidos};
 
-    public PageAdapter(Context context) {
+    public CustomPagerAdapter(Context context) {
         this.context = context;
     }
 

@@ -41,25 +41,6 @@ public class PaisesDisponibles extends AppCompatActivity {
         viewPager5 = findViewById(R.id.viewPager5);
         viewPager6 = findViewById(R.id.viewPager6);
 
-        CustomPagerAdapter adapter1 = new CustomPagerAdapter(this, images1);
-        viewPager1.setAdapter(adapter1);
-
-        CustomPagerAdapter adapter2 = new CustomPagerAdapter(this, images2);
-        viewPager2.setAdapter(adapter2);
-
-        CustomPagerAdapter adapter3 = new CustomPagerAdapter(this, images3);
-        viewPager3.setAdapter(adapter3);
-
-        CustomPagerAdapter adapter4 = new CustomPagerAdapter(this, images4);
-        viewPager4.setAdapter(adapter4);
-
-        CustomPagerAdapter adapter5 = new CustomPagerAdapter(this, images5);
-        viewPager5.setAdapter(adapter5);
-
-        CustomPagerAdapter adapter6 = new CustomPagerAdapter(this, images6);
-        viewPager6.setAdapter(adapter6);
-
-
         handler = new Handler();
         imageRunnable = new Runnable() {
             @Override

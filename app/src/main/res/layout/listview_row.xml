@@ -1,52 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingTop="10dp"
-    android:paddingRight="20dp"
-    android:paddingBottom="10dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/Origen"
+        <ImageButton
+            android:id="@+id/editar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="20dp"
+            android:onClick="editarElemento"
+            android:background="@drawable/editando"
+            tools:ignore="OnClick">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/eliminar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="85dp"
+            android:background="@drawable/borrar">
+        </ImageButton>
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="305dp"
+            android:layout_marginTop="156dp"
+            android:background="@drawable/descargarpdf">
+        </ImageButton>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Origen"
-        android:textSize="24sp" />
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
 
-    <TextView
-        android:id="@+id/Destino"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Destino"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/Origen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Origen"
+            android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/Fechadesalida"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fechadesalida"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/Destino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Destino"
+            android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/Fechaderegreso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fechaderegreso"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/Fechadesalida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fechadesalida"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/Hora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hora"
-        android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/Tipodepago"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tipodepago"
-        android:textSize="18sp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/Fechaderegreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fechaderegreso"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/Hora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hora"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/Tipodepago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipodepago"
+            android:textSize="18sp" />
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.cardview.widget.CardView>
