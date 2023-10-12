@@ -67,7 +67,7 @@ public class Cards extends AppCompatActivity {
         botondereserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Cards.this, InsertForm.class);
+                Intent intent = new Intent(Cards.this, MainActivity2.class);
                 startActivity(intent);
             }
         });
