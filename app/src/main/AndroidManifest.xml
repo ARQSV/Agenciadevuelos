@@ -13,10 +13,10 @@
         android:theme="@style/Theme.AgenciaDeVuelosApp"
         tools:targetApi="31">
         <activity
-            android:name=".Paisesdisponibles"
+            android:name=".Cards"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ListAdapter"
@@ -46,14 +46,18 @@
         <activity
             android:name=".Comprobantes"
             android:exported="false" />
+        <activity android:name=".FAQ"
+            android:exported="false"/>
+        <activity android:name=".Requisitos_viaje"
+            android:exported="false"/>
         <activity
-            android:name=".Cards"
+            android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".RegistrarUsurious"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Paisesdisponibles"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
