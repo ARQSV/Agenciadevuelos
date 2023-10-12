@@ -1,18 +1,18 @@
 package com.example.agenciadevuelosapp;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.viewpager.widget.PagerAdapter;
 
-public class CustomPagerAdapter extends PagerAdapter {
+public class PageAdapter extends PagerAdapter {
     private Context context;
-    private int[] images;
+    private int[] images = {R.drawable.francia, R.drawable.elsalvador, R.drawable.china, R.drawable.guatemala, R.drawable.españa, R.drawable.estadosunidos};
 
-    public CustomPagerAdapter(Context context, int[] images) {
+    public PageAdapter(Context context) {
         this.context = context;
-        this.images = images;
     }
 
     @Override
@@ -29,7 +29,9 @@ public class CustomPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(images[position]);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         container.addView(imageView);
+
         return imageView;
     }
 
@@ -38,3 +40,5 @@ public class CustomPagerAdapter extends PagerAdapter {
         container.removeView((ImageView) object);
     }
 }
+
+
