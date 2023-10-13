@@ -60,35 +60,40 @@
         android:inputType="textLongMessage" />
 
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="date"
-        android:layout_marginTop="25dp"
-        android:hint="  Ingrese la fecha de salida"
-        android:drawableStart="@drawable/baseline_calendar_month_24"/>
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_marginTop="25dp"
+            android:hint="  Ingrese la fecha de salida"
+            android:drawableStart="@drawable/baseline_calendar_month_24"
+            android:focusable="false"
+            android:onClick="showDatePickerDialog"/>
 
-    <EditText
-        android:id="@+id/editTextDate2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="date"
-        android:layout_marginTop="25dp"
-        android:hint="  Ingrese la fecha de regreso"
-        android:drawableStart="@drawable/baseline_calendar_month_24"/>
+        <EditText
+            android:id="@+id/editTextDate2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:layout_marginTop="25dp"
+            android:hint="  Ingrese la fecha de regreso"
+            android:drawableStart="@drawable/baseline_calendar_month_24"
+            android:focusable="false"
+            android:onClick="showReturnDatePickerDialog"/>
 
-    <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="time"
-        android:hint="  Ingrese la Hora"
-        android:layout_marginTop="25dp"
-        android:drawableStart="@drawable/clock"/>
+        <EditText
+            android:id="@+id/editTextTime"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="  Ingrese la Hora"
+            android:layout_marginTop="25dp"
+            android:drawableStart="@drawable/clock"
+            android:focusable="false"
+            android:onClick="showTimePickerDialog"/>
+
+
 
 
         <RadioGroup
