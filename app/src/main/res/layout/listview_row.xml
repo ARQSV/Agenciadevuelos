@@ -11,16 +11,16 @@
         app:cardUseCompatPadding="true">
 
 
-        <ImageView
+        <ImageButton
             android:id="@+id/eliminar"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="300dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/borrar">
-        </ImageView>
+        </ImageButton>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/pagar"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -28,7 +28,7 @@
         android:layout_marginTop="125dp"
         android:background="@drawable/tarjetas">
 
-    </ImageView>
+    </ImageButton>
 
     <androidx.cardview.widget.CardView
         android:layout_width="280dp"
