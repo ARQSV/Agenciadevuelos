@@ -1,136 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    app:cardUseCompatPadding="true"
-    android:layout_margin="20dp">
+    android:orientation="vertical"
+    android:padding= "16dp"
+    tools:context=".InsertForm">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="140dp"
-        android:background="@drawable/informaciondevuelo">
-    </ImageView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_bar_layout">
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:text="Reservar vuelo"
+            android:textSize="24sp"/>
 
+        <ImageButton
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/save_note_btn"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/guatemalaicon"
+            android:layout_alignTop="@id/page_title"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            />
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_below="@id/title_bar_layout"
         android:orientation="vertical"
         android:padding="5dp"
-        tools:context=".InsertForm">
-    <TextView
-        android:id="@+id/textViewReservadeVuelos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  Reserva De Vuelos  "
-        android:textSize="24sp"
-        android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="65dp"/>
-
-    <EditText
-        android:id="@+id/Origen"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="  Origen"
-        android:layout_marginTop="25dp"
-        android:drawableStart="@drawable/airplane"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/Destino"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:layout_marginTop="25dp"
-        android:hint="  Destino"
-        android:drawableStart="@drawable/llegada"
-        android:inputType="textLongMessage" />
-
+        android:layout_marginVertical="26dp"
+        android:backgroundTint="@color/white">
 
         <EditText
-            android:id="@+id/editTextDate"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:layout_marginTop="25dp"
-            android:hint="  Ingrese la fecha de salida"
-            android:drawableStart="@drawable/baseline_calendar_month_24"
-            android:focusable="false"
-            android:onClick="showDatePickerDialog"/>
+            android:layout_height="60dp"
+            android:id="@+id/notes_title_text"
+            android:hint="Titulo"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginVertical="8dp"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:background="@drawable/bordecito"
+            android:maxLines="1"/>
 
         <EditText
-            android:id="@+id/editTextDate2"
+            android:id="@+id/origen"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:layout_marginTop="25dp"
-            android:hint="  Ingrese la fecha de regreso"
-            android:drawableStart="@drawable/baseline_calendar_month_24"
-            android:focusable="false"
-            android:onClick="showReturnDatePickerDialog"/>
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/bordecito"
+            android:gravity="top"
+            android:hint="Origen"
+            android:minLines="15"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTime"
+            android:id="@+id/destino"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:hint="  Ingrese la Hora"
-            android:layout_marginTop="25dp"
-            android:drawableStart="@drawable/clock"
-            android:focusable="false"
-            android:onClick="showTimePickerDialog"/>
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/bordecito"
+            android:gravity="top"
+            android:hint="Destino"
+            android:minLines="15"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-
-
-
-        <RadioGroup
-            android:id="@+id/paymentMethodRadioGroup"
+        <EditText
+            android:id="@+id/salida"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:orientation="vertical">
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/bordecito"
+            android:gravity="top"
+            android:hint="Ingrese una fecha de salida"
+            android:minLines="15"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-            <RadioButton
-                android:id="@+id/creditCardRadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pagar con tarjeta de crédito"
-                android:drawableStart="@drawable/baseline_credit_card_24"
-                android:paddingStart="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"/>
+        <EditText
+            android:id="@+id/regreso"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/bordecito"
+            android:gravity="top"
+            android:hint="Ingrese una fecha de regreso"
+            android:minLines="15"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-            <RadioButton
-                android:id="@+id/debitCardRadioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pagar con tarjeta de débito"
-                android:drawableStart="@drawable/baseline_credit_card_24"
-                android:paddingStart="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"/>
-        </RadioGroup>
+        <EditText
+            android:id="@+id/hora"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/bordecito"
+            android:gravity="top"
+            android:hint="Ingrese la hora"
+            android:minLines="15"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Agregar" />
+    </LinearLayout>
 
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

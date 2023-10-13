@@ -9,4 +9,13 @@
     <color name="fondofinal">#212A30</color>
     <color name="asiento">#F8FAFB</color>
     <color name="login">#A7ACD9</color>
+    <color name="morado">#a870ce</color>
+    <color name="morado_claro">#d196f7</color>
+    <color name="verde">#9ad375</color>
+    <color name="verde_claro">#bdf796</color>
+    <color name="Azul">#76a6e4</color>
+    <color name="Azul_claro">#85b5f4</color>
+    <color name="Celeste">#9fceff</color>
+    <color name="Naranja">#e9ba7c</color>
+    <color name="Amarrillo">#ffdd9d</color>
 </resources>
