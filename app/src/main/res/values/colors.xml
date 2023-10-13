@@ -5,7 +5,8 @@
     <color name="rojo">#FF0000</color>
     <color name="gris">#F0F0F0</color>
     <color name="azul">#0107FF</color>
-    <color name="fondo">#E4EEF5</color>
+    <color name="fondo">#F2FAFF</color>
     <color name="fondofinal">#212A30</color>
     <color name="asiento">#F8FAFB</color>
+    <color name="login">#A7ACD9</color>
 </resources>
