@@ -30,7 +30,7 @@
             android:name=".ItemModel"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".Listview_row"
             android:exported="false" />
         <activity
             android:name=".Reservados"
@@ -57,11 +57,15 @@
         <activity
             android:name=".InsertForm"
             android:exported="false" />
+        <activity android:name=".MainActivity"
+            android:exported="false"/>
+        <activity android:name=".Activity_compras"
+            android:exported="false"/>
         <activity
             android:name=".RegistrarUsurious"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

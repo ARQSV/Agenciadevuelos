@@ -39,7 +39,6 @@ public class InsertForm extends AppCompatActivity {
         FechaR.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
 
         final EditText Hora = findViewById(R.id.editTextTime);
-        final EditText Pago = findViewById(R.id.textViewPago);
 
         Button btn = findViewById(R.id.addButton);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +49,6 @@ public class InsertForm extends AppCompatActivity {
                 String salida = FechaS.getText().toString().replace("/", "-");
                 String regreso = FechaR.getText().toString().replace("/", "-");
                 String hora = Hora.getText().toString();
-                String pago = Pago.getText().toString();
 
                 if (!Arrays.asList(paisesPermitidos).contains(origen)) {
                     Toast.makeText(InsertForm.this, "Este país no está disponible en nuestra agencia, por favor verifica los países disponibles", Toast.LENGTH_SHORT).show();
@@ -62,7 +60,7 @@ public class InsertForm extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(origen) || TextUtils.isEmpty(destino) || TextUtils.isEmpty(salida) || TextUtils.isEmpty(regreso) || TextUtils.isEmpty(hora) || TextUtils.isEmpty(pago)) {
+                if (TextUtils.isEmpty(origen) || TextUtils.isEmpty(destino) || TextUtils.isEmpty(salida) || TextUtils.isEmpty(regreso) || TextUtils.isEmpty(hora)) {
                     Toast.makeText(InsertForm.this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
                 } else if (origen.equalsIgnoreCase(destino)) {
                     Toast.makeText(InsertForm.this, "El origen y el destino no pueden ser iguales", Toast.LENGTH_SHORT).show();
@@ -91,7 +89,7 @@ public class InsertForm extends AppCompatActivity {
                             return;
                         }
 
-                        if (origen.matches(".*\\d.*") || destino.matches(".*\\d.*") || pago.matches(".*\\d.*")) {
+                        if (origen.matches(".*\\d.*") || destino.matches(".*\\d.*")) {
                             Toast.makeText(InsertForm.this, "Los campos de origen, destino y pago no deben contener números", Toast.LENGTH_SHORT).show();
                         } else {
                             Intent intent = new Intent();
@@ -100,7 +98,6 @@ public class InsertForm extends AppCompatActivity {
                             intent.putExtra("salida", salida);
                             intent.putExtra("regreso", regreso);
                             intent.putExtra("hora", hora);
-                            intent.putExtra("pago", pago);
 
                             setResult(Activity.RESULT_OK, intent);
                             finish();
