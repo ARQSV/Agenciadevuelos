@@ -1,7 +1,6 @@
 package com.example.agenciadevuelosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,12 +12,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Arrays;
+import java.util.Date;
 
 public class InsertForm extends AppCompatActivity {
 
-    // Definir una lista de países permitidos
     String[] paisesPermitidos = {"El Salvador", "Francia", "España", "Guatemala", "Estados Unidos", "China"};
 
     @Override
@@ -73,44 +71,47 @@ public class InsertForm extends AppCompatActivity {
                     try {
                         dateSalida = dateFormat.parse(salida);
                         dateRegreso = dateFormat.parse(regreso);
+
+                        if (dateRegreso.equals(dateSalida)) {
+                            Toast.makeText(InsertForm.this, "La fecha de regreso no puede ser igual a la fecha de salida", Toast.LENGTH_SHORT).show();
+                        } else if (dateRegreso.before(dateSalida)) {
+                            Toast.makeText(InsertForm.this, "La fecha de regreso debe ser posterior a la fecha de salida", Toast.LENGTH_SHORT).show();
+                        } else {
+                            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+                            timeFormat.setLenient(false);
+                            Date time;
+                            try {
+                                time = timeFormat.parse(hora);
+                            } catch (ParseException e) {
+                                Toast.makeText(InsertForm.this, "Formato de hora incorrecto", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+
+                            if (origen.matches(".*\\d.*") || destino.matches(".*\\d.*") || pago.matches(".*\\d.*")) {
+                                Toast.makeText(InsertForm.this, "Los campos de origen, destino y pago no deben contener números", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Intent intent = new Intent();
+                                intent.putExtra("origen", origen);
+                                intent.putExtra("destino", destino);
+                                intent.putExtra("salida", salida);
+                                intent.putExtra("regreso", regreso);
+                                intent.putExtra("hora", hora);
+                                intent.putExtra("pago", pago);
+
+                                setResult(Activity.RESULT_OK, intent);
+                                finish();
+                            }
+                        }
                     } catch (ParseException e) {
                         Toast.makeText(InsertForm.this, "Formato de fecha incorrecto", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    if (dateRegreso.before(dateSalida)) {
-                        Toast.makeText(InsertForm.this, "La fecha de regreso debe ser posterior a la fecha de salida", Toast.LENGTH_SHORT).show();
-                    } else {
-                        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-                        timeFormat.setLenient(false);
-                        Date time;
-                        try {
-                            time = timeFormat.parse(hora);
-                        } catch (ParseException e) {
-                            Toast.makeText(InsertForm.this, "Formato de hora incorrecto", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        if (origen.matches(".*\\d.*") || destino.matches(".*\\d.*") || pago.matches(".*\\d.*")) {
-                            Toast.makeText(InsertForm.this, "Los campos de origen, destino y pago no deben contener números", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Intent intent = new Intent();
-                            intent.putExtra("origen", origen);
-                            intent.putExtra("destino", destino);
-                            intent.putExtra("salida", salida);
-                            intent.putExtra("regreso", regreso);
-                            intent.putExtra("hora", hora);
-                            intent.putExtra("pago", pago);
-
-                            setResult(Activity.RESULT_OK, intent);
-                            finish();
-                        }
                     }
                 }
             }
         });
     }
 }
+
+
 
 
 
