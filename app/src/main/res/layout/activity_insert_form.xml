@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".InsertForm">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="20dp">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="140dp"
+        android:background="@drawable/informaciondevuelo">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:context=".InsertForm">
     <TextView
         android:id="@+id/textViewReservadeVuelos"
         android:layout_width="wrap_content"
@@ -19,10 +38,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="65dp"/>
+
     <EditText
         android:id="@+id/Origen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:hint="  Origen"
         android:layout_marginTop="25dp"
@@ -32,7 +52,7 @@
     <EditText
         android:id="@+id/Destino"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:layout_marginTop="25dp"
         android:hint="  Destino"
@@ -43,7 +63,7 @@
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="date"
         android:layout_marginTop="25dp"
@@ -53,7 +73,7 @@
     <EditText
         android:id="@+id/editTextDate2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="date"
         android:layout_marginTop="25dp"
@@ -63,7 +83,7 @@
     <EditText
         android:id="@+id/editTextTime"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="time"
         android:hint="  Ingrese la Hora"
@@ -71,15 +91,34 @@
         android:drawableStart="@drawable/clock"/>
 
 
-    <EditText
-        android:id="@+id/textViewPago"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="  Tipo de Pago"
-        android:layout_marginTop="25dp"
-        android:drawableStart="@drawable/baseline_credit_card_24"
-        />
+        <RadioGroup
+            android:id="@+id/paymentMethodRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/creditCardRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pagar con tarjeta de crédito"
+                android:drawableStart="@drawable/baseline_credit_card_24"
+                android:paddingStart="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
+
+            <RadioButton
+                android:id="@+id/debitCardRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pagar con tarjeta de débito"
+                android:drawableStart="@drawable/baseline_credit_card_24"
+                android:paddingStart="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
+        </RadioGroup>
+
 
     <Button
         android:id="@+id/addButton"
@@ -89,3 +128,4 @@
         android:text="Agregar" />
 
 </LinearLayout>
+    </androidx.cardview.widget.CardView>
