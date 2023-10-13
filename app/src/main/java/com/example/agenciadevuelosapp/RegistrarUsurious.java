@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,6 +35,10 @@ public class RegistrarUsurious extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_usuario);
+
+        ImageView gifImageView = findViewById(R.id.gifImageView);
+        Glide.with(this).asGif().load(R.drawable.avioninicio).into(gifImageView);
+
         mFirestone = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 

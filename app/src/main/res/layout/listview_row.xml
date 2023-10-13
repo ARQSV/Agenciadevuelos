@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,34 +11,24 @@
         app:cardUseCompatPadding="true">
 
 
-        <ImageButton
-            android:id="@+id/editar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="310dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/editando"
-            tools:ignore="OnClick">
-        </ImageButton>
-
-        <ImageButton
+        <ImageView
             android:id="@+id/eliminar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="310dp"
-            android:layout_marginTop="85dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/borrar">
-        </ImageButton>
+        </ImageView>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/pagar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="156dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="125dp"
         android:background="@drawable/tarjetas">
 
-    </ImageButton>
+    </ImageView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="280dp"
