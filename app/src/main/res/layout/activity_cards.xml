@@ -31,13 +31,14 @@
             android:textSize="17sp"
             app:cardCornerRadius="12dp"/>
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/btn_cerrar"
             android:layout_width="30dp"
             android:layout_height="35dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="17dp"
             android:background="@drawable/salida"
-            />
+            android:onClick="Salir" />
 
         <TextView
             android:id="@+id/time"
@@ -54,12 +55,13 @@
             android:layout_marginStart="110dp" />
 
         <ImageView
-           android:id="@+id/foto"
+            android:id="@+id/foto"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_below="@id/time"
+            android:layout_marginTop="40dp"
             android:background="@drawable/nave"
-            android:layout_marginTop="40dp"/>
+            android:onClick="Salir" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cuadrito2"
@@ -97,16 +99,16 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/asiento2"
-                    android:layout_marginStart="60dp"/>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/asiento2" />
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/asiento2"
+                        android:layout_marginStart="60dp"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/asiento2" />
+                </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -220,7 +222,7 @@
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="-55dp"
                     android:backgroundTint="@color/white"
-                    android:onClick="Reserva"
+                    android:onClick="reservar"
                     android:text="Reservar"
                     android:textAlignment="center"
                     android:textColor="@color/black"
@@ -306,7 +308,7 @@
                     android:layout_marginTop="20dp"/>
 
 
-                </LinearLayout>
+            </LinearLayout>
 
 
             <LinearLayout
@@ -347,17 +349,17 @@
             android:background="@drawable/avioneta"
             android:layout_below="@id/titulo2"/>
 
-            <TextView
-                android:layout_below="@id/titulo2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="15 Hours 44 Minutes"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:fontFamily="@font/sofia2"
-                android:textColor="@color/black"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="600dp"/>
+        <TextView
+            android:layout_below="@id/titulo2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="15 Hours 44 Minutes"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:fontFamily="@font/sofia2"
+            android:textColor="@color/black"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="600dp"/>
 
         <TextView
             android:layout_below="@id/titulo2"
@@ -392,7 +394,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="LUGARES DISPONIBLES"
+                    android:text="OFERTAS DISPONIBLES"
                     android:fontFamily="@font/oswaldo"
                     android:textSize="20dp"
                     android:textAlignment="center"/>
@@ -531,6 +533,7 @@
             <LinearLayout
                 android:layout_width="357dp"
                 android:layout_height="110dp"
+                android:onClick="paises"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -547,7 +550,7 @@
                     android:layout_marginStart="60dp"
                     android:layout_marginTop="-80dp"
                     android:fontFamily="@font/oswaldo"
-                    android:text="CHECK-IN ONLINE"
+                    android:text="PAISES DISPONIBLES"
                     android:textSize="18dp" />
 
                 <TextView
@@ -555,7 +558,7 @@
                     android:layout_height="61dp"
                     android:layout_marginStart="60dp"
                     android:fontFamily="@font/oswaldo"
-                    android:text="Obten tu pasa de abordar y ahora tiempo en el aeropuerto "
+                    android:text="lista de paises disponibles a los que puedes viajar y disfrutar al maximo"
                     android:textSize="15dp" />
 
 
@@ -651,6 +654,7 @@
             android:fontFamily="@font/sofia2"
             android:text="Te Contamos lo que pasa en nuestra empresa"
             android:textAlignment="center"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:cardCornerRadius="12dp"
@@ -677,6 +681,7 @@
                     android:fontFamily="@font/sofia2"
                     android:text="VUELA EN CLASE EJECUTIVA Y ELEVA TU EXPERIENCIA"
                     android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="22dp" />
 
 
@@ -701,8 +706,9 @@
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sofia2"
-                    android:text="VUELA EN CLASE EJECUTIVA Y ELEVA TU EXPERIENCIA"
+                    android:text="NUESTRO PERSONAL ALTAMENTE CAPACITADO PARA CUALQUIER PROBLEMA"
                     android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="22dp" />
 
 
@@ -720,10 +726,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cardView10"
                 android:fontFamily="@font/sofia2"
-                android:text="NUETRA EMPRESA"
+                android:text="AERO_VIAJE"
+                android:layout_margin="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold"/>
         </LinearLayout>
     </RelativeLayout>

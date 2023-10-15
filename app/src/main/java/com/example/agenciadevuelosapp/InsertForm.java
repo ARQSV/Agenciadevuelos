@@ -1,113 +1,180 @@
 package com.example.agenciadevuelosapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
-import com.google.firebase.firestore.DocumentReference;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
 
 public class InsertForm extends AppCompatActivity {
 
-    EditText titleNoteEditText, contentNoteEditText;
-    ImageButton saveNoteBtn;
-    TextView pageTitleTextView;
-    String title,origen, destino, salida, regreso, hora, docId;
-
-    boolean isEditMode = false;
+    // Definir una lista de países permitidos
+    String[] paisesPermitidos = {"El Salvador", "Francia", "España", "Guatemala", "Estados Unidos", "China"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_form);
 
-        titleNoteEditText = findViewById(R.id.notes_title_text);
-        contentNoteEditText = findViewById(R.id.origen);
-        contentNoteEditText = findViewById(R.id.destino);
-        contentNoteEditText = findViewById(R.id.salida);
-        contentNoteEditText = findViewById(R.id.regreso);
-        contentNoteEditText = findViewById(R.id.hora);
-        saveNoteBtn = findViewById(R.id.save_note_btn);
-        pageTitleTextView = findViewById(R.id.page_title);
+        final EditText Origen = findViewById(R.id.Origen);
+        final EditText Destino = findViewById(R.id.Destino);
 
-        title = getIntent().getStringExtra("title");
-        origen = getIntent().getStringExtra("origen");
-        destino = getIntent().getStringExtra("destino");
-        salida = getIntent().getStringExtra("salida");
-        regreso = getIntent().getStringExtra("regreso");
-        hora = getIntent().getStringExtra("hora");
-        docId = getIntent().getStringExtra("docId");
+        Origen.setInputType(InputType.TYPE_CLASS_TEXT);
+        Destino.setInputType(InputType.TYPE_CLASS_TEXT);
 
-        if(docId!=null && !docId.isEmpty()){
-            isEditMode = true;
-        }
+        final EditText FechaS = findViewById(R.id.editTextDate);
+        final EditText FechaR = findViewById(R.id.editTextDate2);
 
-        titleNoteEditText.setText(title);
-        contentNoteEditText.setText(origen);
-        contentNoteEditText.setText(destino);
-        contentNoteEditText.setText(salida);
-        contentNoteEditText.setText(regreso);
-        contentNoteEditText.setText(hora);
+        FechaS.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
+        FechaR.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
 
-        if(isEditMode){
-            pageTitleTextView.setText("Editar nota");
-        }
+        final EditText Hora = findViewById(R.id.editTextTime);
+        final RadioButton Pago = findViewById(R.id.creditCardRadioButton);
 
-        saveNoteBtn.setOnClickListener((v) -> saveNote());
+        Button btn = findViewById(R.id.addButton);
 
+        EditText editTextDate = findViewById(R.id.editTextDate); // Reemplaza con la referencia a tu EditText
 
-    }
-    void saveNote() {
-        String titleNote = titleNoteEditText.getText().toString();
-        String origenNote = contentNoteEditText.getText().toString();
-        String destinoNote = contentNoteEditText.getText().toString();
-        String salidaNote = contentNoteEditText.getText().toString();
-        String regresoNote = contentNoteEditText.getText().toString();
-        String horaNote = contentNoteEditText.getText().toString();
-        if (titleNote==null || titleNote.isEmpty()) {
-            titleNoteEditText.setError("El titulo es requerido");
-            return;
-        }
-
-        Note note = new Note();
-        note.setTitle(titleNote);
-        note.setOrigen(origenNote);
-        note.setDestino(destinoNote);
-        note.setSalida(salidaNote);
-        note.setRegreso(regresoNote);
-        note.setHora(horaNote);
-        note.setDate(Timestamp.now());
-
-        saveNoteToFirebase(note);
-        finish();
-    }
-
-    void saveNoteToFirebase(Note note) {
-        DocumentReference documentReference;
-        if (isEditMode) {
-            documentReference = Utility.getCollectionReferenceForNotes().document(docId);
-        }else{
-            documentReference = Utility.getCollectionReferenceForNotes().document();
-        }
-
-        documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+        editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(InsertForm.this, "Nota guardada", Toast.LENGTH_SHORT).show();
-                    finish();
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment(editTextDate);
+                datePicker.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
+        EditText editTextDateReturn = findViewById(R.id.editTextDate2); // Reemplaza con la referencia a tu segundo EditText
+
+        editTextDateReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragmentReturn(editTextDateReturn);
+                datePicker.show(getSupportFragmentManager(), "datePickerReturn");
+            }
+        });
+
+        EditText editTextTime = findViewById(R.id.editTextTime); // Reemplaza con la referencia a tu EditText para la hora
+
+        editTextTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timePicker = new TimePickerFragment(editTextTime);
+                timePicker.show(getSupportFragmentManager(), "timePicker");
+            }
+        });
+
+        RadioGroup paymentMethodRadioGroup = findViewById(R.id.paymentMethodRadioGroup);
+        RadioButton creditCardRadioButton = findViewById(R.id.creditCardRadioButton);
+        RadioButton debitCardRadioButton = findViewById(R.id.debitCardRadioButton);
+
+        paymentMethodRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.creditCardRadioButton) {
+                    // El usuario seleccionó pagar con tarjeta de crédito
+                    // Aquí puedes realizar acciones relacionadas con tarjeta de crédito
+                } else if (checkedId == R.id.debitCardRadioButton) {
+                    // El usuario seleccionó pagar con tarjeta de débito
+                    // Aquí puedes realizar acciones relacionadas con tarjeta de débito
+                }
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String origen = Origen.getText().toString();
+                String destino = Destino.getText().toString();
+                String salida = FechaS.getText().toString().replace("/", "-");
+                String regreso = FechaR.getText().toString().replace("/", "-");
+                String hora = Hora.getText().toString();
+                String pago = Pago.getText().toString();
+
+                if (!Arrays.asList(paisesPermitidos).contains(origen)) {
+                    Toast.makeText(InsertForm.this, "Este país no está disponible en nuestra agencia, por favor verifica los países disponibles", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!Arrays.asList(paisesPermitidos).contains(destino)) {
+                    Toast.makeText(InsertForm.this, "Destino no válido. Verifica los países disponibles", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(origen) || TextUtils.isEmpty(destino) || TextUtils.isEmpty(salida) || TextUtils.isEmpty(regreso) || TextUtils.isEmpty(hora) || TextUtils.isEmpty(pago)) {
+                    Toast.makeText(InsertForm.this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
+                } else if (origen.equalsIgnoreCase(destino)) {
+                    Toast.makeText(InsertForm.this, "El origen y el destino no pueden ser iguales", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(InsertForm.this, "No se pudo guardar la nota", Toast.LENGTH_SHORT).show();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                    dateFormat.setLenient(false);
+                    Date dateSalida, dateRegreso;
+
+                    try {
+                        dateSalida = dateFormat.parse(salida);
+                        dateRegreso = dateFormat.parse(regreso);
+                    } catch (ParseException e) {
+                        Toast.makeText(InsertForm.this, "Formato de fecha incorrecto", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    // Obtener la fecha actual
+                    Date fechaActual = new Date();
+
+                    if (dateSalida.before(fechaActual)) {
+                        Toast.makeText(InsertForm.this, "La fecha de salida no puede ser anterior a la fecha actual", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (dateRegreso.before(dateSalida)) {
+                        Toast.makeText(InsertForm.this, "La fecha de regreso debe ser posterior a la fecha de salida", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (dateSalida.equals(dateRegreso)) {
+                        Toast.makeText(InsertForm.this, "La fecha de regreso no puede ser la misma que la de salida", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+                    timeFormat.setLenient(false);
+                    Date time;
+                    try {
+                        time = timeFormat.parse(hora);
+                    } catch (ParseException e) {
+                        Toast.makeText(InsertForm.this, "Formato de hora incorrecto", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if (origen.matches(".*\\d.*") || destino.matches(".*\\d.*") || pago.matches(".*\\d.*")) {
+                        Toast.makeText(InsertForm.this, "Los campos de origen, destino y pago no deben contener números", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent();
+                        intent.putExtra("origen", origen);
+                        intent.putExtra("destino", destino);
+                        intent.putExtra("salida", salida);
+                        intent.putExtra("regreso", regreso);
+                        intent.putExtra("hora", hora);
+                        intent.putExtra("pago", pago);
+
+                        setResult(Activity.RESULT_OK, intent);
+                        finish();
+                    }
                 }
             }
         });
     }
-
 }

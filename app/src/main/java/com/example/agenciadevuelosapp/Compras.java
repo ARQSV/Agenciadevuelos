@@ -1,14 +1,13 @@
 package com.example.agenciadevuelosapp;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
@@ -26,10 +25,6 @@ public class Compras extends AppCompatActivity {
         setContentView(R.layout.activity_compras);
 
         textViewPrice = findViewById(R.id.textview_price);
-
-        EditText etFechaVencimiento = findViewById(R.id.etFechaVencimiento);
-        etFechaVencimiento.addTextChangedListener(new ExpiryDateTextWatcher());
-
 
         // Asigna precios a las opciones del vuelo
         flightPrices = new HashMap<>();

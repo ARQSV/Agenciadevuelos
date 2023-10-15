@@ -19,16 +19,16 @@
 
     <TextView
         android:id="@+id/tituloCard1"
-        android:layout_below="@id/gifImageView"
-        android:layout_marginTop="20dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/gifImageView"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/oswaldo"
-        android:textStyle="bold"
-        android:text="BIENVENIDO A DMT"
+        android:text="BIENVENIDO AEROVIAJE"
         android:textAlignment="center"
-        android:textSize="32sp" />
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/favor"

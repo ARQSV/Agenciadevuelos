@@ -1,148 +1,177 @@
 package com.example.agenciadevuelosapp;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.MenuItem;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    //Se declaran variables miembro para representar las vistas en la actividad
-    FloatingActionButton addNoteBtn;
-    //agregar
-    RecyclerView recyclerView;
-    ImageButton menuBtn;
-    NoteAdapter noteAdapter;
-    SearchView searchView;
+    ArrayList<ItemModel> items = new ArrayList<>();
+    ListAdapter list;
+    ListView listView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        addNoteBtn = findViewById(R.id.add_note_btn);
-        recyclerView = findViewById(R.id.recyler_view);
-        menuBtn = findViewById(R.id.menu_btn);
-        searchView = findViewById(R.id.searchViewhome);
-        searchView.clearFocus();
-
-        addNoteBtn.setOnClickListener((v) -> startActivity(new Intent(MainActivity2.this, InsertForm.class)));
-
-        menuBtn.setOnClickListener((v) -> showMenu());
-        setupRecyclerView();
-
-
-        recyclerView.setAdapter(noteAdapter);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        swipeRefreshLayout = findViewById(R.id.refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Limpia el foco del SearchView para evitar problemas de cierre inesperado
-                searchView.clearFocus();
-                updateQuery(newText);
-                return true;
+            public void onRefresh() {
+                loadDataFromDB();
             }
         });
 
-    }
-    //metodo para buscar las notas
-    private void updateQuery(String searchText) {
-        CollectionReference userNotesRef = Utility.getCollectionReferenceForNotes();
-
-        Query query;
-
-        if (TextUtils.isEmpty(searchText)) {
-            query = userNotesRef;
-        } else {
-            // Utiliza una consulta que busque notas que contengan el texto ingresado en el título
-            query = userNotesRef.whereGreaterThanOrEqualTo("title", searchText)
-                    .whereLessThan("title", searchText + "\uf8ff");
-        }
-
-        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>()
-                .setQuery(query, Note.class)
-                .build();
-
-        // Actualiza las opciones del adaptador
-        noteAdapter.updateOptions(options);
-    }
-
-
-    //para cerrar secion
-    void showMenu() {
-        PopupMenu popupMenu = new PopupMenu(MainActivity2.this,menuBtn);
-        popupMenu.getMenu().add("Salir");
-        popupMenu.show();
-        popupMenu.setOnMenuItemClickListener( new PopupMenu.OnMenuItemClickListener() {
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                if ("Salir".equals(menuItem.getTitle())) {
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity2.this, login.class));
-                    finish();
-                    return true;
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity2.this, InsertForm.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
+        list = new ListAdapter(this, items);
+        listView = findViewById(R.id.list);
+        listView.setAdapter(list);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                removeItem(position);
+            }
+        });
+
+        this.loadDataFromDB();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if (resultCode == Activity.RESULT_CANCELED) {
+                    break;
                 }
-                return false;
-            }
-        });
-    }
+                String origen = data.getExtras().getString("origen");
+                String destino = data.getExtras().getString("destino");
+                String salida = data.getExtras().getString("salida");
+                String regreso = data.getExtras().getString("regreso");
+                String hora= data.getExtras().getString("hora");
+                String pago = data.getExtras().getString("pago");
 
-    void setupRecyclerView(){//configurar el RecyclerView y mostrar la lista de notas
-
-
-        //Obtiene una consulta de Firebase Firestore para las notas utilizando
-        Query query = Utility.getCollectionReferenceForNotes();
-        //Se crea una instancia de la clase FirestoreRecyclerOptions
-        //que contiene la configuración de la lista de notas
-        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>()
-                .setQuery(query, Note.class).build();
-
-        //Configura el RecyclerView con un LinearLayoutManager y asigna el adaptador noteAdapter al RecyclerView
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        noteAdapter = new NoteAdapter(options, this);
-        recyclerView.setAdapter(noteAdapter);
-    }
-
-
-    //Estos métodos son parte del ciclo de vida de la actividad y se utilizan para administrar la escucha de cambios en Firestore y notificar al adaptador cuando la actividad se encuentra en diferentes estados.
-    @Override
-    protected void onStart() {
-        super.onStart();
-        noteAdapter.startListening();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (noteAdapter != null) {
-            noteAdapter.stopListening();
+                addItem(origen, destino,salida,regreso,hora,pago);
+                break;
         }
     }
 
+    protected void loadDataFromDB() {
+        swipeRefreshLayout.setRefreshing(true);
+        db.collection("lista").orderBy("created", Query.Direction.ASCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        list.clear();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String origen = (String) document.getData().get("origen");
+                                String destino = (String) document.getData().get("destino");
+                                String salida = (String) document.getData().get("salida");
+                                String regreso = (String) document.getData().get("regreso");
+                                String hora = (String) document.getData().get("hora");
+                                String pago = (String) document.getData().get("pago");
+                                items.add(new ItemModel(document.getId(), origen, destino,salida,regreso,hora,pago));
+                            }
+                            list.notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(MainActivity2.this, "Error al obtener datos", Toast.LENGTH_SHORT).show();
+                        }
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        noteAdapter.notifyDataSetChanged();
+    private void addItem(String origen, String destino,String salida,String regreso,String hora, String pago) {
+        items.add(new ItemModel("", origen, destino,salida,regreso,hora,pago));
+        list.notifyDataSetChanged();
+        Map<String, Object> item = new HashMap<>();
+        item.put("origen", origen);
+        item.put("destino", destino);
+        item.put("salida", salida);
+        item.put("regreso", regreso);
+        item.put("hora", hora);
+        item.put("pago", pago);
+        item.put("created", new Timestamp(new Date()));
+        db.collection("lista")
+                .add(item)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        loadDataFromDB();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity2.this, "No se pudo agregar el ítem", Toast.LENGTH_SHORT).show();
+                        loadDataFromDB();
+                    }
+                });
+    }
+
+    private void removeItem(final int index) {
+        ItemModel item = items.get(index);
+        final String itemId = item.getId();
+
+        db.collection("lista").document(itemId).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Successfully deleted the item from Firestore, now update the UI
+                        items.remove(index);
+                        list.notifyDataSetChanged();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle the error here
+                        String errorMessage = e.getMessage();
+                        Log.e("DeleteItemError", "Error deleting item: " + errorMessage);
+                        Toast.makeText(MainActivity2.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

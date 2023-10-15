@@ -30,9 +30,6 @@
             android:name=".ItemModel"
             android:exported="false" />
         <activity
-            android:name=".Listview_row"
-            android:exported="false" />
-        <activity
             android:name=".Reservados"
             android:exported="false" />
         <activity android:name=".login" />
@@ -58,8 +55,6 @@
             android:name=".InsertForm"
             android:exported="false" />
         <activity android:name=".MainActivity"
-            android:exported="false"/>
-        <activity android:name=".Activity_compras"
             android:exported="false"/>
         <activity
             android:name=".RegistrarUsurious"

@@ -1,7 +1,9 @@
 package com.example.agenciadevuelosapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -57,5 +59,13 @@ public class francia extends AppCompatActivity {
                 handler.postDelayed(update, AUTO_SCROLL_DELAY);
             }
         });
+    }
+    public void regresar (View view){
+        Intent intent = new Intent(this, Cards.class);
+        startActivity(intent);
+    }
+    public void reservar (View view){
+        Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
     }
 }

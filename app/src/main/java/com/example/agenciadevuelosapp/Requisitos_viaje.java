@@ -3,11 +3,12 @@ package com.example.agenciadevuelosapp;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

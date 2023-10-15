@@ -54,9 +54,9 @@
             android:drawableEnd="@drawable/franceicon"
             android:textSize="24sp"
             app:layout_constraintTop_toBottomOf="@+id/cardViewDescripcion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager1"
@@ -193,9 +193,9 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/viewPager6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
